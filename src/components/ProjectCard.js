@@ -1,47 +1,27 @@
 import React from 'react';
-import styled from 'styled-components';
+// import "./ProjectCardStyle.css";
+import {FaArrowRight} from "react-icons/fa";
+import {FiGithub} from "react-icons/fi";
+import Tilt from 'react-parallax-tilt';
 
-const Card = styled.div`
-  margin-bottom: 120px;
-  opacity: 0;
-  animation: fadeIn 0.4s ease forwards;
-  
-  @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+export default function ProjectCard(props) {
+  const handleOnClick = () => {
+    window.open(`${props.projectLink}`);
   }
-`;
 
-const Title = styled.h2`
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-`;
-
-const Description = styled.p`
-  font-size: 1.2rem;
-  color: #666;
-  margin-bottom: 1.5rem;
-`;
-
-const ViewButton = styled.a`
-  color: #007AFF;
-  text-decoration: none;
-  font-weight: 500;
-  
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const ProjectCard = ({ title, description, link, linkText }) => {
   return (
-    <Card>
-      <Title>{title}</Title>
-      <Description>{description}</Description>
-      <ViewButton href={link}>{linkText}</ViewButton>
-    </Card>
-  );
-};
+    <div className='project-window' id = {props.id}>
+      <div className={`project-wrapper ${props.className}`}>
+        <div className="about-project">
+          <div className="project-title">{props.projectTitle}</div>
+          <div className="desc">{props.projectDesc}</div>
+          <button className='btn' onClick={handleOnClick}><span>View on<FiGithub className="social" size={20} style={{ marginLeft: "8px", position: "relative", top: "2px", strokeWidth: "3" }}/></span><FaArrowRight className='btn-arrow' size={22} style={{marginLeft: "1rem"}}/></button>
+        </div>
+        <Tilt className="project-img" gyroscope= {true} >
+            <a href={props.deployedProjectLink} target= "_blank" rel="noopener noreferrer"><img src={props.projectImg} alt="Displaying Project" /></a>
+        </Tilt>
 
-export default ProjectCard;
+      </div>
+    </div>
+  )
+}
