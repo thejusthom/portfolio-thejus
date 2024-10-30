@@ -19,7 +19,7 @@ export default function Banner({id}) {
             </div>
         </div>
         <div className="mask">
-            <img className='bg' src={cartoon} alt="girl-with-laptop" />
+            <img className='bg' alt="girl-with-laptop" />
         </div>
     </div>
   )
