@@ -31,7 +31,7 @@ function App() {
       <Navbar />
       <HomeBanner id = "home"/>
       <AboutMe id = 'about' />
-      <ProjectCard
+      {/* <ProjectCard
         id = "project"
         className = "odd"
         projectTitle="Wiggles: Pet Care Made Easy"
@@ -56,7 +56,7 @@ function App() {
         projectLink="https://github.com/Deepajha14/Rog-Free"
         deployedProjectLink="https://deepajha14.github.io/Rog-Free/"
         // projectImg={require('./images/projectRogfree.png')}
-      />
+      /> */}
       <SkillCard id = 'skills' />
       <Footer />
     </div>

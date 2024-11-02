@@ -75,7 +75,7 @@ export default function Navbar() {
       </ul>
       <div className={click ? "social-links active" : "social-links"}>
         <a
-          href="https://www.linkedin.com/in/deepajha14/"
+          href="https://www.linkedin.com/in/thejusthomson/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -86,7 +86,7 @@ export default function Navbar() {
           />
         </a>
         <a
-          href="https://github.com/Deepajha14"
+          href="https://github.com/thejusthom"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -96,7 +96,7 @@ export default function Navbar() {
             style={{ marginRight: "2rem" }}
           />
         </a>
-        <a
+        {/* <a
           href="https://www.instagram.com/artsydeepa/"
           target="_blank"
           rel="noopener noreferrer"
@@ -106,7 +106,7 @@ export default function Navbar() {
             size={25}
             style={{ marginRight: "2rem" }}
           />
-        </a>
+        </a> */}
       </div>
       <div className="hamburger" onClick={handleCLick}>
         {click ? (

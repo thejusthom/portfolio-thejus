@@ -18,9 +18,9 @@ export default function Banner({id}) {
               <a className='btn' href="https://www.linkedin.com/in/thejusthomson/" target="_blank" rel="noopener noreferrer">Hire Me</a>
             </div>
         </div>
-        <div className="mask">
+        {/* <div className="mask">
             <img className='bg' alt="girl-with-laptop" />
-        </div>
+        </div> */}
     </div>
   )
 }
