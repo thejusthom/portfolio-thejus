@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+import "./App.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import HomeBanner from "./components/HomeBanner";
@@ -30,6 +30,7 @@ function App() {
     <div>
       <Navbar />
       <HomeBanner id = "home"/>
+      <AboutMe id = 'about' />
       <ProjectCard
         id = "project"
         className = "odd"
@@ -56,7 +57,6 @@ function App() {
         deployedProjectLink="https://deepajha14.github.io/Rog-Free/"
         // projectImg={require('./images/projectRogfree.png')}
       />
-      <AboutMe id = 'about' />
       <SkillCard id = 'skills' />
       <Footer />
     </div>

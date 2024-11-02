@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import "./NavbarStyle.css";
+import "../styles/NavBarStyle.css";
 import { Link } from "react-scroll";
 import {
   FaGithub,

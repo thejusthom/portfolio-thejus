@@ -1,5 +1,5 @@
 import React from 'react'
-// import "./SkillCardStyle.css";
+import "../styles/SkillCardStyle.css";
 import { CgCPlusPlus } from "react-icons/cg";
 import {DiGit} from "react-icons/di";
 import {SiVisualstudiocode, SiReact, SiReactrouter, SiBootstrap, SiFigma, SiInkscape } from "react-icons/si";

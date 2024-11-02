@@ -1,3 +1,8 @@
+:root {
+    --blue: #1e90ff;
+    --white: #ffffff;
+  }
+  
 .home .content {
     height: 100vh;
     display: flex;
@@ -66,7 +71,7 @@
 
   .home .content .dynamicTitle li span {
     white-space: wrap;
-    background-image: linear-gradient(to right, #ffe1a0, #f67280, #F94892);
+    background-image: linear-gradient(to right, #ffe1a0, #f67280, --blue);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     z-index: -1;

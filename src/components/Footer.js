@@ -1,5 +1,5 @@
 import React from 'react';
-// import "./FooterStyle.css";
+import '../styles/FooterStyle.css'
 
 export default function Footer() {
   const styleSymbol = {
@@ -9,7 +9,7 @@ export default function Footer() {
   }
   return (
     <div className='footer'>
-        Made with ❤ by Deepa Jha <span style={styleSymbol}>©</span> 2023
+        Made with ❤ by Thejus Thomson <span style={styleSymbol}>©</span> 2024
     </div>
   )
 }

@@ -1,3 +1,8 @@
+:root {
+    --blue: #1e90ff;
+    --white: #ffffff;
+  }
+  
 .about-container {
     display: flex;
     margin: 80px 13vw 0 18vw;
@@ -14,7 +19,7 @@
     font-size: 22px;
     font-weight: 600;
     margin-top: 100px;
-    color: #F94892;
+    color: --blue;
 }
 
 .profile-photo .img {
@@ -29,14 +34,14 @@
     padding-top: 75px;
     width: 110px;
     overflow-wrap: break-word;
-    color: #F94892;
+    color: --blue;
     text-transform: uppercase;
     z-index: 0;
     font-size: 100px;
     font-family: 'Intro', sans-serif;
     font-weight: 800;
     text-transform: uppercase;
-    background: -webkit-linear-gradient(-86deg, #ffe1a0  5%, #f67280 53%, #F94892 91%);
+    background: -webkit-linear-gradient(-86deg, #ffe1a0  5%, #f67280 53%, --blue 91%);
     -webkit-background-clip: text;
     -webkit-text-stroke: 4px transparent;
     background-clip: text;
@@ -52,7 +57,7 @@
 }
 
 .aboutMe-text span {
-    color: #F94892;
+    color: --blue;
 }
 
 .about-container .aboutMe-text h3 {
@@ -63,8 +68,8 @@
 }
 
 .about-container .aboutMe-text .resume {
-    color: #F94892;
-    border-bottom: 2.5px solid #F94892;
+    color: --blue;
+    border-bottom: 2.5px solid --blue;
     transition: all 0.3s ease-in-out;
     display: inline-block;
     font-weight: 800;

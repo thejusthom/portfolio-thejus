@@ -1,5 +1,5 @@
 import React from 'react';
-// import "./ProjectCardStyle.css";
+import "../styles/ProjectCardStyle.css";
 import {FaArrowRight} from "react-icons/fa";
 import {FiGithub} from "react-icons/fi";
 import Tilt from 'react-parallax-tilt';
