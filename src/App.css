@@ -1,8 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-:root {
-  --blue: #1e90ff;
-  --white: #ffffff;
-}
 
 *{
   box-sizing: border-box;
@@ -33,7 +29,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid --blue;
+  border: 2px solid #1e90ff;
   width: fit-content;
   padding: 15px 25px;
   color: #fff;
@@ -47,7 +43,7 @@ ul {
 }
 
 .btn:hover {
-  background-color: --blue;
+  background-color: #1e90ff;
   bottom: 12px;
   box-shadow: 0 0 20px 1px rgba(205, 106, 139, 0.65);
 }

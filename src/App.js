@@ -24,13 +24,12 @@ function App() {
         mixBlendMode: 'exclusion'
       }}
       innerStyle={{
-        backgroundColor: '#F94892'
+        backgroundColor: '#1e90ff'
       }}
     />
     <div>
       <Navbar />
       <HomeBanner id = "home"/>
-      <AboutMe id = 'about' />
       {/* <ProjectCard
         id = "project"
         className = "odd"
@@ -57,6 +56,7 @@ function App() {
         deployedProjectLink="https://deepajha14.github.io/Rog-Free/"
         // projectImg={require('./images/projectRogfree.png')}
       /> */}
+      <AboutMe id = "about" />
       <SkillCard id = 'skills' />
       <Footer />
     </div>
