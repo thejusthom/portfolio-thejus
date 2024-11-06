@@ -3,7 +3,6 @@ import "../styles/NavBarStyle.css";
 import { Link } from "react-scroll";
 import {
   FaGithub,
-  FaInstagram,
   FaLinkedin,
   FaBars,
   FaTimes,
@@ -25,7 +24,7 @@ export default function Navbar() {
         >
           <div className="logo-img">
             <span className="blink">&lt;</span>
-            <span>&#47;</span>T<span className="blink">&gt;</span>
+            <span>&#47;</span>TT<span className="blink">&gt;</span>
           </div>
         </Link>
       </div>
@@ -62,7 +61,7 @@ export default function Navbar() {
             smooth={true}
             duration={30}>Skills</Link>
         </li>
-        <li>
+        {/* <li>
           <Link
           className="navLink"
             activeClass="active"
@@ -71,7 +70,7 @@ export default function Navbar() {
             smooth={true}
             duration={30}
           >Contact</Link>
-        </li>
+        </li> */}
       </ul>
       <div className={click ? "social-links active" : "social-links"}>
         <a

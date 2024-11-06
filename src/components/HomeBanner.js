@@ -13,7 +13,7 @@ export default function Banner({id}) {
                 <div className='hrLine'></div>
               </div>
               <ul className="dynamicTitle">
-                <li>+<span>Full-Stack</span></li>
+                <li><span>Full-Stack</span></li>
               </ul>
               <a className='btn' href="https://www.linkedin.com/in/thejusthomson/" target="_blank" rel="noopener noreferrer">Hire Me</a>
             </div>
