@@ -169,7 +169,7 @@
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, #00172D, #02386E, #0052A2);
+    /* background: linear-gradient(45deg, #00172D, #02386E, #0052A2); */
     border-radius: 22px;
     z-index: -1;
     animation: borderGlow 5s linear infinite;
@@ -235,6 +235,11 @@
         min-width: 35px;
     }
 
+    .project-content {
+        margin: 15px 0;
+        min-height: 40px;
+    }
+
     .project-preview,
     .project-full {
         font-size: 1rem;
@@ -243,6 +248,10 @@
     .btn {
         padding: 10px 20px;
         font-size: 0.9rem;
+    }
+
+    .project-wrapper.expanded .project-preview {
+        display: none; /* Add this for mobile */
     }
 }
 
