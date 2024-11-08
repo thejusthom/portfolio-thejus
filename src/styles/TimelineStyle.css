@@ -155,9 +155,10 @@
 } */
 
 @media screen and (max-width: 768px) {
+    
     .timeline-container {
         padding: 30px 20px;
-        margin: 40px 0;
+        margin: 60px 0;
     }
 
     .timeline::before {
@@ -217,7 +218,6 @@
     }
 }
 
-/* Hover effect */
 .timeline-item::before {
     content: '';
     position: absolute;
