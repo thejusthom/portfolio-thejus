@@ -1,7 +1,10 @@
 .timeline-container {
     width: 100%;
-    padding: 40px 5%;
-    margin: 60px 0;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 5%;
+    position: relative;
+    z-index: 1;
 }
 
 .timeline {
@@ -16,7 +19,7 @@
     position: absolute;
     width: 4px;
     height: 100%;
-    background: linear-gradient(to bottom, #ccfcff, #72ebf6, #1e90ff);
+    background: linear-gradient(to right, #72c2ff, #2c81d5, #074e90);
     left: 50%;
     transform: translateX(-50%);
     border-radius: 2px;
@@ -26,18 +29,19 @@
     margin: 40px 0;
     position: relative;
     width: calc(50% - 30px);
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(2, 56, 110, 0.05);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 40px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
 }
 
 .timeline-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 30px rgba(0, 23, 45, 0.3);
+    background: rgba(2, 56, 110, 0.1);
 }
 
 .timeline-item:nth-child(odd) {
@@ -48,14 +52,14 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    background: linear-gradient(45deg, #1976d2, #64b5f6);
+    background: linear-gradient(45deg, #00264D, #02386E);
     border-radius: 50%;
     left: -50px;
     top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 23, 45, 0.2);
 }
 
 .timeline-icon {
@@ -69,7 +73,7 @@
 }
 
 .timeline-year {
-    color: #72ebf6;
+    color: #2774ae;
     font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 12px;
@@ -79,7 +83,7 @@
     margin-bottom: 20px;
     font-size: 1.5rem;
     font-weight: 600;
-    background: linear-gradient(to right, #ccfcff, #72ebf6, #1e90ff);
+    background: linear-gradient(to right, #72c2ff, #2c81d5, #074e90);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -93,7 +97,7 @@
     left: 0;
     width: 60px;
     height: 3px;
-    background: linear-gradient(to right, #ccfcff, #72ebf6, #1e90ff);
+    background: linear-gradient(to right, #72c2ff, #2c81d5, #074e90);
     border-radius: 2px;
 }
 
@@ -105,24 +109,24 @@
 
 .expand-button {
     padding: 12px;
-    background: linear-gradient(45deg, #1976d2, #64b5f6);
+    background: linear-gradient(45deg, #00264D, #02386E);
     border: none;
     border-radius: 30px;
     color: white;
     cursor: pointer;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
-    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 23, 45, 0.2);
     margin: 15px 0;
 }
 
 .expand-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(25, 118, 210, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 23, 45, 0.3);
 }
 
 .expand-button.active {
@@ -136,7 +140,7 @@
     line-height: 1.6;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
 }
 
@@ -146,19 +150,70 @@
     margin-top: 15px;
 }
 
-.timeline-item.education .timeline-dot {
-    background: linear-gradient(45deg, #1976d2, #64b5f6);
+/* Add expanded state similar to project card */
+.timeline-item.expanded {
+    transform: scale(1.01);
+    box-shadow: 0 15px 40px rgba(0, 23, 45, 0.3);
 }
 
-/* .timeline-item.work .timeline-dot {
-    background: linear-gradient(45deg, #2e7d32, #81c784);
-} */
+.timeline-item.expanded::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00172D, #02386E, #0052A2);
+    border-radius: 22px;
+    z-index: -1;
+    animation: borderGlow 5s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* Hover gradient overlay */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 23, 45, 0.1), rgba(2, 56, 110, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.timeline-item:hover::before {
+    opacity: 1;
+}
+
+/* Animation for description */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-description.active {
+    animation: slideDown 0.3s ease forwards;
+}
 
 @media screen and (max-width: 768px) {
-    
     .timeline-container {
         padding: 30px 20px;
-        margin: 60px 0;
+        margin: 40px auto;
     }
 
     .timeline::before {
@@ -216,38 +271,4 @@
         height: 35px;
         padding: 8px;
     }
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(100, 181, 246, 0.1), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 20px;
-    pointer-events: none;
-}
-
-.timeline-item:hover::before {
-    opacity: 1;
-}
-
-/* Animation for description */
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.timeline-description.active {
-    animation: slideDown 0.3s ease forwards;
 }

@@ -47,9 +47,9 @@
     width: fit-content;
     white-space: nowrap;
     background-color: #ccfcff; 
-    background-image: linear-gradient(to right, #ccfcff, #72ebf6, #1e90ff);
+    background: linear-gradient(to right, #72c2ff, #2c81d5, #074e90);
     background-size: 100%;
-    -webkit-background-clip: text;
+    -webkit-background-clip: text;  
     -moz-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
