@@ -12,11 +12,8 @@ export default function Banner({id}) {
                 Developer
                 <div className='hrLine'></div>
               </div>
-              {/* <ul className="dynamicTitle">
-                <li><span>Full-Stack</span></li>
-              </ul> */}
-              <Typewriter></Typewriter>
-              <a className='btn' href="https://www.linkedin.com/in/thejusthomson/" target="_blank" rel="noopener noreferrer">Hire Me</a>
+              <Typewriter/>
+              <a className='btn' href="https://linkedin.com/in/thejusthomson/" target="_blank" rel="noopener noreferrer">Hire Me</a>
             </div>
         </div>
         {/* <div className="mask">
