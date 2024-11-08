@@ -36,6 +36,16 @@ export default function Navbar() {
           <Link
           className="navLink"
             activeClass="active"
+            to="timeline"
+            spy={true}
+            smooth={true}
+            duration={30}
+          >Timeline</Link>
+        </li>
+        <li>
+          <Link
+          className="navLink"
+            activeClass="active"
             to="project"
             spy={true}
             smooth={true}

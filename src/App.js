@@ -38,7 +38,7 @@ function App() {
     <div>
       <Navbar />
       <HomeBanner id = "home"/>
-      <Timeline></Timeline>
+      <Timeline id = "timeline"></Timeline>
       <ProjectCard
         id = "project"
         className = "odd"
