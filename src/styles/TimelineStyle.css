@@ -110,7 +110,7 @@
     border-radius: 30px;
     color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,6 +130,7 @@
 }
 
 .timeline-description {
+    white-space: pre-line;
     color: #e0e0e0;
     font-size: 1.1rem;
     line-height: 1.6;
@@ -140,21 +141,19 @@
 }
 
 .timeline-description.active {
-    max-height: 300px;
+    max-height: 350px;
     opacity: 1;
     margin-top: 15px;
 }
 
-/* Education vs Work styling */
 .timeline-item.education .timeline-dot {
     background: linear-gradient(45deg, #1976d2, #64b5f6);
 }
 
-.timeline-item.work .timeline-dot {
+/* .timeline-item.work .timeline-dot {
     background: linear-gradient(45deg, #2e7d32, #81c784);
-}
+} */
 
-/* Responsive Design */
 @media screen and (max-width: 768px) {
     .timeline-container {
         padding: 30px 20px;

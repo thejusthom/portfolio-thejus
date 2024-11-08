@@ -8,27 +8,36 @@ function Timeline() {
   const timelineData = [
     {
       id: 1,
-      year: "2020 - 2022",
-      title: "Masters in Computer Science",
-      institution: "University Name",
-      description: "Specialized in Software Engineering with focus on distributed systems. Notable projects included building scalable web applications and research in cloud computing.",
+      year: "2023 - Present",
+      title: "Masters in Software Engineering",
+      institution: "Northeastern University",
+      description: "• Core coursework in Object-Oriented Design and Program Structure & Algorithms\n" +
+      "• Advanced studies in Web Design, UX Engineering, and Cloud Computing\n" +
+      "• Specialized in Data Science Engineering and Database Management\n" +
+      "• Hands-on experience with modern software development methodologies",
       type: "education"
     },
     {
       id: 2,
-      year: "2016 - 2020",
-      title: "Bachelor of Technology",
-      institution: "University Name",
-      description: "Major in Computer Science. Core coursework in data structures, algorithms, and software development. Led technical team for college fest.",
-      type: "education"
+      year: "2021 - 2023",
+      title: "Application Developer",
+      institution: "IBM",
+      description: "• Developed RESTful APIs with Spring Boot & Hibernate achieving sub-second response times\n" +
+      "• Reduced processing time by 40% using Apache Camel parallel threading\n" +
+      "• Migrated SOAP to REST APIs, increasing transaction capacity by 50%\n" +
+      "• Managed 30+ projects using Agile/Kanban methodologies\n" +
+      "• Enhanced security with Tomcat 9 upgrade and SonarQube implementation",
+      type: "work"
     },
     {
       id: 3,
-      year: "2022 - Present",
-      title: "Software Engineer",
-      institution: "Company Name",
-      description: "Working on full-stack development using React and Node.js. Leading team of 5 developers for client projects.",
-      type: "work"
+      year: "2016 - 2020",
+      title: "Bachelor Engineering",
+      institution: "Anna University",
+      description: "• Secured top grades in Data Structures and Object-Oriented Programming\n" +
+      "• Completed practical training in OOP Lab with hands-on Java programming\n" +
+      "• Developed strong foundation in programming alongside electronics expertise",
+      type: "education"
     }
   ];
 
