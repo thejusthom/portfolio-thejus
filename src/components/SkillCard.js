@@ -70,7 +70,7 @@ export default function SkillCard({id}) {
               <abbr title='Amazon Web Services'><FaAws className='techLogo'/></abbr>
               <abbr title='Microsoft Azure'><SiMicrosoftazure className='techLogo'/></abbr>
               <abbr title='IBM Cloud'><SiIbmcloud className='techLogo'/></abbr>
-              <abbr title='Git/Github'><FaGithub className='techLogo'/></abbr>
+              <abbr title='Github Actions'><FaGithub className='techLogo'/></abbr>
               <abbr title='Jenkins'><DiJenkins className='techLogo'/></abbr>
             </div>            
           </div>

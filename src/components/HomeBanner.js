@@ -1,6 +1,6 @@
 import React from 'react';
 import "../styles/HomeBannerStyle.css";
-// import cartoon from "../images/cartoon-compressed.png";
+import Typewriter from "./Typewriter"
 
 export default function Banner({id}) {
   return (
@@ -12,9 +12,10 @@ export default function Banner({id}) {
                 Developer
                 <div className='hrLine'></div>
               </div>
-              <ul className="dynamicTitle">
+              {/* <ul className="dynamicTitle">
                 <li><span>Full-Stack</span></li>
-              </ul>
+              </ul> */}
+              <Typewriter></Typewriter>
               <a className='btn' href="https://www.linkedin.com/in/thejusthomson/" target="_blank" rel="noopener noreferrer">Hire Me</a>
             </div>
         </div>
