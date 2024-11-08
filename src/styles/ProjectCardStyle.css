@@ -1,18 +1,23 @@
+/* ProjectCardStyle.css */
+
 .project-window {
     width: 100%;
-    padding: 40px 5%;
-    margin: 60px 0;
+    max-width: 1200px; /* Control maximum width */
+    margin: 60px auto; /* Center the container */
+    padding: 0 5%;
+    position: relative;
+    z-index: 1; /* Ensure it's below navbar */
 }
 
 .project-wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
+    position: relative;
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 40px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
 }
 
 .project-wrapper:hover {
@@ -21,19 +26,24 @@
     background: rgba(255, 255, 255, 0.04);
 }
 
-.about-project {
-    width: 100%;
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align to top */
+    margin-bottom: 20px;
+    gap: 20px; /* Space between title and button */
 }
 
 .project-title {
-    margin-bottom: 20px;
+    margin: 0;
     font-size: 2rem;
     font-weight: 600;
-    background: linear-gradient(to right, #ccfcff, #72ebf6, #1e90ff);
+    background-image: linear-gradient(to right, #ccfcff, #72ebf6, #1e90ff);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
+    flex: 1; /* Take up remaining space */
 }
 
 .project-title::after {
@@ -47,15 +57,77 @@
     border-radius: 2px;
 }
 
-.about-project .desc {
+.expand-toggle {
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    min-width: 40px; /* Prevent shrinking */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #64b5f6;
+    background: rgba(100, 181, 246, 0.1);
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.expand-toggle:hover {
+    background: rgba(100, 181, 246, 0.2);
+}
+
+.expand-toggle svg {
+    transition: transform 0.3s ease;
+}
+
+.expand-toggle.expanded svg {
+    transform: rotate(180deg);
+}
+
+.project-content {
+    position: relative;
+    margin: 20px 0;
+    min-height: 50px; /* Minimum height for content */
+}
+
+.project-preview {
+    color: #e0e0e0;
     font-size: 1.1rem;
     line-height: 1.6;
+    transition: opacity 0.3s ease;
+}
+
+.project-full {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     color: #e0e0e0;
-    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.project-wrapper.expanded .project-preview {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.project-wrapper.expanded .project-full {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    position: relative; /* Change to relative when expanded */
 }
 
 /* Button Styling */
 .btn {
+    margin-top: 20px;
     padding: 12px 24px;
     background: linear-gradient(45deg, #1976d2, #64b5f6);
     border: none;
@@ -65,7 +137,7 @@
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
     box-shadow: 0 4px 15px rgba(25, 118, 210, 0.2);
@@ -84,22 +156,69 @@
     transform: translateX(5px);
 }
 
+/* Expansion animation */
+.project-wrapper.expanded {
+    transform: scale(1.01);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient border animation */
+.project-wrapper.expanded::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00172D, #02386E, #0052A2);
+    border-radius: 22px;
+    z-index: -1;
+    animation: borderGlow 5s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
 /* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .project-window {
+        padding: 0 4%;
+    }
+    
+    .project-wrapper {
+        padding: 30px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .project-window {
-        padding: 30px 20px;
-        margin: 60px 0;
+        margin: 40px auto;
+        padding: 0 20px;
     }
 
     .project-wrapper {
-        padding: 30px;
+        padding: 25px;
+    }
+
+    .project-wrapper.expanded {
+        transform: scale(1.01);
     }
 
     .project-title {
         font-size: 1.75rem;
     }
 
-    .about-project .desc {
+    .expand-toggle {
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+    }
+
+    .project-preview,
+    .project-full {
         font-size: 1rem;
     }
 
@@ -111,7 +230,8 @@
 
 @media screen and (max-width: 480px) {
     .project-window {
-        padding: 20px 15px;
+        margin: 30px auto;
+        padding: 0 15px;
     }
 
     .project-wrapper {
@@ -122,7 +242,8 @@
         font-size: 1.5rem;
     }
 
-    .about-project .desc {
+    .project-preview,
+    .project-full {
         font-size: 0.9rem;
     }
 
@@ -130,22 +251,4 @@
         padding: 8px 16px;
         font-size: 0.85rem;
     }
-}
-
-.project-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(100, 181, 246, 0.1), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 20px;
-    pointer-events: none;
-}
-
-.project-wrapper:hover::before {
-    opacity: 1;
 }
