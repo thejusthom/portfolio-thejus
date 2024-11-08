@@ -16,9 +16,9 @@ function App() {
     <Helmet>
         <title>Thejus Thomson</title>
         <meta name="description" content="Your site description" />
-        {/* Open Graph tags for social sharing */}
+        {/* Open Graph tags for social sharing
         <meta property="og:title" content="Your Site Name" />
-        <meta property="og:site_name" content="Your Site Name" />
+        <meta property="og:site_name" content="Your Site Name" /> */}
     </Helmet>
     <AnimatedCursor
       color="#fff"

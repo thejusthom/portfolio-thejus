@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/TimelineStyle.css';
+import { FaChevronDown, FaGraduationCap, FaBriefcase } from 'react-icons/fa';
 
 function Timeline() {
   const [activeItem, setActiveItem] = useState(null);
@@ -38,16 +39,26 @@ function Timeline() {
           <div 
             key={item.id}
             className={`timeline-item ${item.type} ${activeItem === item.id ? 'active' : ''}`}
-            onClick={() => setActiveItem(item.id === activeItem ? null : item.id)}
           >
-            <div className="timeline-dot"></div>
+            <div className="timeline-dot">
+              {item.type === 'education' ? 
+                <FaGraduationCap className="timeline-icon" /> : 
+                <FaBriefcase className="timeline-icon" />
+              }
+            </div>
             <div className="timeline-content">
               <div className="timeline-year">{item.year}</div>
               <h3 className="timeline-title">{item.title}</h3>
               <div className="timeline-institution">{item.institution}</div>
-              {activeItem === item.id && (
-                <p className="timeline-description">{item.description}</p>
-              )}
+              <button 
+                className={`expand-button ${activeItem === item.id ? 'active' : ''}`}
+                onClick={() => setActiveItem(item.id === activeItem ? null : item.id)}
+              >
+                <FaChevronDown />
+              </button>
+              <div className={`timeline-description ${activeItem === item.id ? 'active' : ''}`}>
+                {item.description}
+              </div>
             </div>
           </div>
         ))}
