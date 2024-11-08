@@ -8,6 +8,7 @@ import AboutMe from './components/About'
 import SkillCard from './components/SkillCard'
 import AnimatedCursor from "react-animated-cursor"
 import { Helmet } from 'react-helmet';
+import Timeline from "./components/Timeline";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
     <div>
       <Navbar />
       <HomeBanner id = "home"/>
+      <Timeline></Timeline>
       <ProjectCard
         id = "project"
         className = "odd"
