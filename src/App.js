@@ -7,11 +7,18 @@ import ProjectCard from './components/ProjectCard'
 import AboutMe from './components/About'
 import SkillCard from './components/SkillCard'
 import AnimatedCursor from "react-animated-cursor"
-
+import { Helmet } from 'react-helmet';
 
 function App() {
   return (
     <>
+    <Helmet>
+        <title>Thejus Thomson</title>
+        <meta name="description" content="Your site description" />
+        {/* Open Graph tags for social sharing */}
+        <meta property="og:title" content="Your Site Name" />
+        <meta property="og:site_name" content="Your Site Name" />
+    </Helmet>
     <AnimatedCursor
       color="#fff"
       innerSize={12}

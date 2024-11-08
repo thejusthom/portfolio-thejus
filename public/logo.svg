@@ -1,0 +1,22 @@
+<!-- logo.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <style>
+    .logo-text { 
+      font-size: 17px; 
+      font-weight: 600; 
+      font-family: Arial, sans-serif;
+    }
+    .blue-text { 
+      fill: #1e90ff; 
+    }
+    .white-text { 
+      fill: #ffffff; 
+    }
+  </style>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">
+    <tspan class="blue-text">&lt;</tspan>
+    <tspan class="blue-text">/</tspan>
+    <tspan class="white-text">TT</tspan>
+    <tspan class="blue-text">&gt;</tspan>
+  </text>
+</svg>
