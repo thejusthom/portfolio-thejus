@@ -110,6 +110,12 @@
         backdrop-filter: blur(30px);
     }
 
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
     .header .logo {
         width: auto;
         height: auto;
@@ -133,7 +139,7 @@
         width: 50vw;
         position: absolute;
         top: 0;
-        height: 85vh;
+        height: 100vh;
         right: -100%;
         transition: 0.5s;
         background: rgb(18, 18, 18);
@@ -156,17 +162,27 @@
     }
 
     .header .social-links {
-        padding: 2rem;
-        position: absolute;
-        top: 85vh;
-        height: 20vh;
-        right: -100%;
-        width: 50%;
+        padding: 0;
+        position: static;
+        height: auto;
+        width: auto;
         flex-direction: row;
-        justify-content: space-evenly;
-        transition: 0.5s;
-        z-index: 110;
-        background: rgb(18, 18, 18);
+        gap: 15px;
+        background: none;
+        transition: none;
+        /* background: rgb(18, 18, 18); */
+    }
+
+    
+    .header .social-links .social {
+        margin: 0;
+        width: 20px; /* Adjust size as needed */
+        height: 20px;
+    }
+
+    .header .social-links .social:hover {
+        transform: scale(1.2);
+        fill: #1e90ff;
     }
 
     .header .social-links.active {
