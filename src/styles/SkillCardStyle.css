@@ -1,7 +1,6 @@
 .skill-container {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: center;
     padding-top: 50px;
     margin: 70px 7vw 0px 15vw;
@@ -31,6 +30,16 @@
     justify-content: space-evenly;
     align-items: center;
     gap: 10px 25px;
+    position: relative; /* Added for tooltip positioning */
+}
+
+/* New styles for the icon wrapper */
+.skill-icon-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .techLogo {
@@ -43,14 +52,50 @@
     cursor: pointer;
 }
 
-.skill-box .skillset abbr .techLogo:hover{
+/* Updated hover effect */
+.skill-icon-wrapper:hover .techLogo {
     border: 2px solid rgb(255, 255, 255);
     box-shadow: 0px 5px 20px 0px rgba(255, 255, 255, 0.4);
     transform: scale(1.15);
 }
 
-@media screen and (max-width: 1040px), (max-height: 550px) {
+/* Tooltip styles */
+.skill-title {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1;
+}
 
+.skill-title.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Desktop hover */
+@media (hover: hover) {
+    .skill-icon-wrapper:hover .skill-title {
+        opacity: 1;
+        visibility: visible;
+        bottom: -35px;
+    }
+}
+
+/* Mobile styles */
+@media screen and (max-width: 1040px), (max-height: 550px) {
     .skill-container {
         margin: 50px 7vw 0px 20vw;
     }
@@ -58,12 +103,43 @@
 
 @media screen and (max-width: 750px) {
     .skill-container {
-        padding-top:  80px;
+        padding-top: 80px;
         margin: 0 50px 0px;
     }
 
     .techLogo {
         height: 80px;
         padding: 14px;
+    }
+
+    .skill-title {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    /* Ensure tooltips are visible on mobile */
+    .skill-title.active {
+        bottom: -30px;
+    }
+}
+
+/* Additional mobile optimization */
+@media screen and (max-width: 480px) {
+    .skill-container .skill-header {
+        font-size: 40px;
+    }
+
+    .skill-box h2 {
+        font-size: 1.2rem;
+    }
+
+    .techLogo {
+        height: 60px;
+        padding: 12px;
+    }
+
+    .skill-box .skillset {
+        gap: 15px;
+        margin: 20px 0 40px;
     }
 }

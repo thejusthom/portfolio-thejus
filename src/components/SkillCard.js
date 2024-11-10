@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../styles/SkillCardStyle.css";
 import { FaJava, FaPython, FaNodeJs, FaAws, FaGithub, FaAngular, FaRProject } from "react-icons/fa";
 import { DiMongodb, DiPostgresql, DiMysql, DiJenkins } from "react-icons/di";
@@ -10,71 +10,85 @@ import { TbBrandJavascript, TbBrandHtml5, TbBrandTypescript } from "react-icons/
 import { VscTerminalCmd } from "react-icons/vsc";
 
 export default function SkillCard({id}) {
+  const [activeTitle, setActiveTitle] = useState(null);
+
+  const handleIconInteraction = (title) => {
+    setActiveTitle(activeTitle === title ? null : title);
+  };
+
+  const skillsData = {
+    languages: [
+      { icon: <FaJava className='techLogo'/>, title: 'Java' },
+      { icon: <FaPython className='techLogo'/>, title: 'Python' },
+      { icon: <TbBrandHtml5 className='techLogo'/>, title: 'HTML 5' },
+      { icon: <TbBrandJavascript className='techLogo'/>, title: 'JavaScript' },
+      { icon: <TbBrandTypescript className='techLogo'/>, title: 'TypeScript' },
+      { icon: <VscTerminalCmd className='techLogo'/>, title: 'Unix Commands' },
+      { icon: <SiTerraform className='techLogo'/>, title: 'Terraform' },
+      { icon: <FaRProject className='techLogo'/>, title: 'R' }
+    ],
+    frameworks: [
+      { icon: <SiSpringboot className='techLogo'/>, title: 'Spring Boot' },
+      { icon: <SiReact className='techLogo'/>, title: 'ReactJS' },
+      { icon: <FaAngular className='techLogo'/>, title: 'Angular' },
+      { icon: <SiBootstrap className='techLogo'/>, title: 'Bootstrap' },
+      { icon: <FaNodeJs className='techLogo'/>, title: 'Node.js' },
+      { icon: <SiExpress className='techLogo'/>, title: 'Express.js' }
+    ],
+    libraries: [
+      { icon: <SiRedux className='techLogo'/>, title: 'Redux' },
+      { icon: <SiGradle className='techLogo'/>, title: 'Gradle' },
+      { icon: <SiApachejmeter className='techLogo'/>, title: 'JUnit' },
+      { icon: <SiHibernate className='techLogo'/>, title: 'Hibernate' },
+      { icon: <SiNumpy className='techLogo'/>, title: 'NumPy' },
+      { icon: <SiPandas className='techLogo'/>, title: 'Pandas' }
+    ],
+    databases: [
+      { icon: <SiOracle className='techLogo'/>, title: 'Oracle SQL' },
+      { icon: <DiPostgresql className='techLogo'/>, title: 'PostgreSQL' },
+      { icon: <DiMysql className='techLogo'/>, title: 'MySQL' },
+      { icon: <DiMongodb className='techLogo'/>, title: 'MongoDB' }
+    ],
+    cloudDevOps: [
+      { icon: <SiGooglecloud className='techLogo'/>, title: 'Google Cloud Platform' },
+      { icon: <FaAws className='techLogo'/>, title: 'Amazon Web Services' },
+      { icon: <SiMicrosoftazure className='techLogo'/>, title: 'Microsoft Azure' },
+      { icon: <SiIbmcloud className='techLogo'/>, title: 'IBM Cloud' },
+      { icon: <FaGithub className='techLogo'/>, title: 'Github Actions' },
+      { icon: <DiJenkins className='techLogo'/>, title: 'Jenkins' }
+    ]
+  };
+
+  const SkillSection = ({ title, skills }) => (
+    <div className="skill-box">
+      <h2>{title}</h2>
+      <div className="skillset">
+        {skills.map((skill, index) => (
+          <div 
+            key={index}
+            className="skill-icon-wrapper"
+            onClick={() => handleIconInteraction(skill.title)}
+            onMouseEnter={() => handleIconInteraction(skill.title)}
+            onMouseLeave={() => handleIconInteraction(null)}
+          >
+            {skill.icon}
+            <span className={`skill-title ${activeTitle === skill.title ? 'active' : ''}`}>
+              {skill.title}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
-    <>
-        <div className="skill-container" id={id}>
-          <div className="skill-header">My Skills</div>
-          
-          <div className="skill-box">
-            <h2>Languages</h2>
-            <div className="skillset">
-              <abbr title='Java'><FaJava className='techLogo'/></abbr>
-              <abbr title='Python'><FaPython className='techLogo'/></abbr>
-              <abbr title='HTML 5'><TbBrandHtml5 className='techLogo'/></abbr>
-              <abbr title='JavaScript'><TbBrandJavascript className='techLogo'/></abbr>
-              <abbr title='TypeScript'><TbBrandTypescript className='techLogo'/></abbr>
-              <abbr title='Unix Commands'><VscTerminalCmd className='techLogo'/></abbr>
-              <abbr title='Terraform'><SiTerraform className='techLogo'/></abbr>
-              <abbr title='R'><FaRProject className='techLogo'/></abbr>
-            </div>                     
-          </div>
-
-          <div className="skill-box">
-            <h2>Frameworks</h2>
-            <div className="skillset">
-              <abbr title='Spring Boot'><SiSpringboot className='techLogo'/></abbr>
-              <abbr title='ReactJS'><SiReact className='techLogo'/></abbr>
-              <abbr title='Angular'><FaAngular className='techLogo'/></abbr>
-              <abbr title='Bootstrap'><SiBootstrap className='techLogo'/></abbr>
-              <abbr title='Node.js'><FaNodeJs className='techLogo'/></abbr>
-              <abbr title='Express.js'><SiExpress className='techLogo'/></abbr>
-            </div>            
-          </div>
-
-          <div className="skill-box">
-            <h2>Libraries</h2>
-            <div className="skillset">
-              <abbr title='Redux'><SiRedux className='techLogo'/></abbr>
-              <abbr title='Gradle'><SiGradle className='techLogo'/></abbr>
-              <abbr title='JUnit'><SiApachejmeter className='techLogo'/></abbr>
-              <abbr title='Hibernate'><SiHibernate className='techLogo'/></abbr>
-              <abbr title='NumPy'><SiNumpy className='techLogo'/></abbr>
-              <abbr title='Pandas'><SiPandas className='techLogo'/></abbr>
-            </div>            
-          </div>
-
-          <div className="skill-box">
-            <h2>Databases</h2>
-            <div className="skillset">
-              <abbr title='Oracle SQL'><SiOracle className='techLogo'/></abbr>
-              <abbr title='PostgreSQL'><DiPostgresql className='techLogo'/></abbr>
-              <abbr title='MySQL'><DiMysql className='techLogo'/></abbr>
-              <abbr title='MongoDB'><DiMongodb className='techLogo'/></abbr>
-            </div>            
-          </div>
-
-          <div className="skill-box">
-            <h2>Cloud & DevOps</h2>
-            <div className="skillset">
-              <abbr title='Google Cloud Platform'><SiGooglecloud className='techLogo'/></abbr>
-              <abbr title='Amazon Web Services'><FaAws className='techLogo'/></abbr>
-              <abbr title='Microsoft Azure'><SiMicrosoftazure className='techLogo'/></abbr>
-              <abbr title='IBM Cloud'><SiIbmcloud className='techLogo'/></abbr>
-              <abbr title='Github Actions'><FaGithub className='techLogo'/></abbr>
-              <abbr title='Jenkins'><DiJenkins className='techLogo'/></abbr>
-            </div>            
-          </div>
-        </div>
-    </>
-  )
+    <div className="skill-container" id={id}>
+      <div className="skill-header">My Skills</div>
+      <SkillSection title="Languages" skills={skillsData.languages} />
+      <SkillSection title="Frameworks" skills={skillsData.frameworks} />
+      <SkillSection title="Libraries" skills={skillsData.libraries} />
+      <SkillSection title="Databases" skills={skillsData.databases} />
+      <SkillSection title="Cloud & DevOps" skills={skillsData.cloudDevOps} />
+    </div>
+  );
 }
