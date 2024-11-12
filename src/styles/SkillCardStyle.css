@@ -30,7 +30,9 @@
     justify-content: space-evenly;
     align-items: center;
     gap: 10px 25px;
-    position: relative; /* Added for tooltip positioning */
+    position: relative;
+    transform: translateZ(0);
+    will-change: contents;
 }
 
 /* New styles for the icon wrapper */
@@ -50,13 +52,18 @@
     padding: 30px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    will-change: transform, border, box-shadow;
+    transform: translateZ(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Updated hover effect */
 .skill-icon-wrapper:hover .techLogo {
     border: 2px solid rgb(255, 255, 255);
     box-shadow: 0px 5px 20px 0px rgba(255, 255, 255, 0.4);
-    transform: scale(1.15);
+    transform: scale(1.15) translateZ(0);
 }
 
 /* Tooltip styles */
@@ -73,7 +80,10 @@
     font-size: 0.9rem;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    will-change: opacity, visibility, bottom;
+    transition: opacity 0.2s ease,
+                visibility 0.2s ease,
+                bottom 0.2s ease;
     white-space: nowrap;
     pointer-events: none;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -110,11 +120,15 @@
     .techLogo {
         height: 80px;
         padding: 14px;
+        transition: transform 0.2s ease,
+                   border 0.2s ease;
     }
 
     .skill-title {
         font-size: 0.8rem;
         padding: 6px 10px;
+        transition: opacity 0.2s ease,
+                   visibility 0.2s ease;
     }
 
     /* Ensure tooltips are visible on mobile */
