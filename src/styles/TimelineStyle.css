@@ -110,7 +110,8 @@
 
 .expand-button {
     padding: 12px;
-    background: linear-gradient(45deg, #00264D, #02386E);
+    /* background: linear-gradient(45deg, #00264D, #02386E); */
+    background: transparent;
     border: none;
     border-radius: 30px;
     color: white;
@@ -211,10 +212,22 @@
     animation: slideDown 0.3s ease forwards;
 }
 
+@media screen and (max-width: 1040px), (max-height: 550px) {
+    .timeline-container {
+        margin: 50px 7vw 0px 20vw; /* Add left margin to account for sidebar */
+        padding: 0 20px;
+    }
+
+    .timeline {
+        max-width: 900px; /* Reduce max-width for better fit */
+    }
+}
+
 @media screen and (max-width: 768px) {
     .timeline-container {
-        padding: 30px 20px;
-        margin: 40px auto;
+        margin: 80px auto 40px; /* Reset margin for mobile view */
+        padding: 0 20px;
+        /* overflow-x: hidden; */
     }
 
     .timeline::before {
@@ -245,6 +258,54 @@
     
     .timeline-icon {
         font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .timeline-container {
+        width: calc(100% - 100px); /* Account for sidebar */
+        margin-left: 100px; /* Adjust based on your sidebar width */
+        padding: 0 20px;
+    }
+
+    .timeline {
+        max-width: 100%;
+        padding: 40px 20px;
+    }
+
+    .timeline-item {
+        width: calc(50% - 40px); /* Reduce width slightly */
+    }
+
+    .timeline::before {
+        left: calc(50% - 2px); /* Center the timeline line */
+    }
+
+    .timeline-dot {
+        left: -40px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+        right: -40px;
+    }
+}
+
+/* Fix for iPad Pro and similar tablet screens */
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+    .timeline-container {
+        width: calc(100% - 120px);
+        margin-left: 120px;
+        padding: 0 30px;
+        overflow-x: hidden;
+    }
+
+    .timeline {
+        width: 100%;
+        max-width: none;
+    }
+
+    .timeline-item {
+        width: calc(50% - 50px);
     }
 }
 
