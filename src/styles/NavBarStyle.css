@@ -1,4 +1,4 @@
-.header{
+.header {
     position: fixed;
     height: 100%;
     display: flex;
@@ -10,11 +10,12 @@
     backdrop-filter: blur(3px);
     z-index: 100;
 }
+
 .header .logo {
     cursor: pointer;
 }
 
-.header .logo .logo-img{
+.header .logo .logo-img {
     width: 100%;
     height: 100%;
     font-size: 50px;
@@ -32,20 +33,12 @@
 }
 
 @keyframes blink {
-    0% {
-        color: #1e90ff;
-    }
-
-    50% {
-        color: transparent;
-    }
-    100% {
-        color: #1e90ff;
-        
-    }
+    0% { color: #1e90ff; }
+    50% { color: transparent; }
+    100% { color: #1e90ff; }
 }
 
-.header .nav-menu{
+.header .nav-menu {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -53,18 +46,19 @@
     flex-basis: 70%;
 }
 
-.nav-menu li{
+.nav-menu li {
     width: max-content;
     padding: 10px;
     transform: rotate(270deg);
 }
 
-.nav-menu li .navLink{
+.nav-menu li .navLink {
     font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
 }
+
 .nav-menu li .navLink:hover {
     color: #1e90ff;
 }
@@ -81,12 +75,30 @@
 .header .social-links {
     width: 3rem;
     display: flex;
+    padding-left: 10px;
     flex-direction: column;
+    gap: 15px;
 }
 
-.header .social-links .social{
-    margin: 5px 0;
+/* Style both buttons and links consistently */
+.header .social-links a,
+.header .social-links .social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: inherit;
+    width: 25px;
+    height: 25px;
+    transition: all 0.5s ease-in-out;
+}
+
+.header .social-links .social {
     width: 100%;
+    height: 100%;
     transition: all 0.5s ease-in-out;
 }
 
@@ -94,12 +106,39 @@
     display: none;
 }
 
-.header .social-links .social:hover {
+/* Hover effects */
+.header .social-links a:hover,
+.header .social-links .social-btn:hover {
     transform: scale(1.5);
+}
+
+.header .social-links a:hover .social,
+.header .social-links .social-btn:hover .social {
     fill: #1e90ff;
 }
 
+/* Toast notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 20px;
+    z-index: 1000;
+    animation: fadeInOut 2s ease forwards;
+}
 
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, 20px); }
+    20% { opacity: 1; transform: translate(-50%, 0); }
+    80% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, -20px); }
+}
+
+/* Mobile styles */
 @media screen and (max-width: 750px), (max-height: 550px) {
     .header {
         width: 100vw;
@@ -108,12 +147,6 @@
         padding: 10px 20px;
         z-index: 100;
         backdrop-filter: blur(30px);
-    }
-
-    .header-left {
-        display: flex;
-        align-items: center;
-        gap: 20px;
     }
 
     .header .logo {
@@ -167,25 +200,43 @@
         height: auto;
         width: auto;
         flex-direction: row;
-        gap: 15px;
+        gap: 20px;
         background: none;
         transition: none;
-        /* background: rgb(18, 18, 18); */
     }
 
-    
-    .header .social-links .social {
-        margin: 0;
-        width: 20px; /* Adjust size as needed */
+    .header .social-links a,
+    .header .social-links .social-btn {
+        width: 20px;
         height: 20px;
     }
 
-    .header .social-links .social:hover {
-        transform: scale(1.2);
-        fill: #1e90ff;
+    .header .social-links .social {
+        margin: 0;
     }
 
     .header .social-links.active {
         right: 0;
+    }
+
+    .toast {
+        bottom: 60px;
+    }
+}
+
+/* Additional mobile optimization */
+@media screen and (max-width: 480px) {
+    .header .logo .logo-img {
+        font-size: 35px;
+    }
+
+    .header .social-links {
+        gap: 15px;
+    }
+
+    .header .social-links a,
+    .header .social-links .social-btn {
+        width: 18px;
+        height: 18px;
     }
 }
