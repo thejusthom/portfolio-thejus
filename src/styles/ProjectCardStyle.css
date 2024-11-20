@@ -1,4 +1,3 @@
-/* ProjectCardStyle.css */
 .project-window {
     width: 100%;
     max-width: 1200px;
@@ -128,7 +127,8 @@
 .btn {
     margin-top: 20px;
     padding: 12px 24px;
-    background: linear-gradient(45deg, #00264D, #02386E);
+    background: linear-gradient(45deg, #00264D, #02386E) !important;
+    /* background: transparent; */
     border: none;
     border-radius: 30px;
     color: white;
@@ -169,7 +169,7 @@
     left: -2px;
     right: -2px;
     bottom: -2px;
-    /* background: linear-gradient(45deg, #00172D, #02386E, #0052A2); */
+    background: linear-gradient(45deg, #00172D, #02386E, #0052A2);
     border-radius: 22px;
     z-index: -1;
     animation: borderGlow 5s linear infinite;
@@ -203,7 +203,9 @@
 /* Responsive Design */
 @media screen and (max-width: 1024px) {
     .project-window {
-        padding: 0 4%;
+        padding: 0 0 0 15%;
+        /* margin-left: 20px;*/
+        max-width: 100%;
     }
     
     .project-wrapper {

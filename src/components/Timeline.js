@@ -5,6 +5,10 @@ import { FaChevronDown, FaGraduationCap, FaBriefcase } from 'react-icons/fa';
 function Timeline() {
   const [activeItem, setActiveItem] = useState(null);
 
+  const handleItemClick = (id) => {
+    setActiveItem(activeItem === id ? null : id);
+  };
+  
   const timelineData = [
     {
       id: 1,
@@ -47,7 +51,8 @@ function Timeline() {
         {timelineData.map((item) => (
           <div 
             key={item.id}
-            className={`timeline-item ${item.type} ${activeItem === item.id ? 'active' : ''}`}
+            className={`timeline-item ${item.type} ${activeItem === item.id ? 'expanded' : ''}`}
+            onClick={() => handleItemClick(item.id)}
           >
             <div className="timeline-dot">
               {item.type === 'education' ? 
@@ -61,7 +66,11 @@ function Timeline() {
               <div className="timeline-institution">{item.institution}</div>
               <button 
                 className={`expand-button ${activeItem === item.id ? 'active' : ''}`}
-                onClick={() => setActiveItem(item.id === activeItem ? null : item.id)}
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent double-triggering
+                  handleItemClick(item.id);
+                }}
+                aria-label={activeItem === item.id ? 'Collapse' : 'Expand'}
               >
                 <FaChevronDown />
               </button>
@@ -75,5 +84,6 @@ function Timeline() {
     </div>
   );
 }
+
 
 export default Timeline;
