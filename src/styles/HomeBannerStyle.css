@@ -31,7 +31,6 @@
     align-items: center;
     height: fit-content;
     width: fit-content;
-
 }
 
 .home .content .staticTitle .hrLine {
@@ -40,7 +39,7 @@
     width: 20vw;
 }
 
-.Typewriter{
+.Typewriter {
     font-size: 100px;
     font-weight: 500;
     line-height: 100px;
@@ -56,18 +55,45 @@
     -moz-text-fill-color: transparent;
 }
 
-/* .home .content .dynamicTitle {
-    font-size: 100px;
-    font-weight: 500;
-    line-height: 100px;
-    width: fit-content;
-
+.hero-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 20px;
+    letter-spacing: 0.5px;
 }
 
-.home .content .dynamicTitle li {
-    width: 100%;
-    z-index: -1;
-} */
+.hero-cta-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.hero-cta-container .btn {
+    margin-top: 0;
+}
+
+.hero-cta-container .btn.primary {
+    background: linear-gradient(45deg, #1e90ff, #0066cc);
+    border: 2px solid transparent;
+}
+
+.hero-cta-container .btn.primary:hover {
+    background: linear-gradient(45deg, #0066cc, #004d99);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(30, 144, 255, 0.4);
+}
+
+.hero-cta-container .btn.secondary {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.hero-cta-container .btn.secondary:hover {
+    border-color: #1e90ff;
+    background: rgba(30, 144, 255, 0.1);
+    transform: translateY(-3px);
+}
 
 @keyframes slider {
     0%   {width: 0%; }
@@ -80,21 +106,6 @@
     100% {opacity: 0;}
 }
 
-  /* .home .content .dynamicTitle li span {
-    white-space: wrap;
-    background-image: linear-gradient(to right, #ccfcff, #72ebf6, #1e90ff);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    z-index: -1;
-  }
-
-  .home .content .dynamicTitle li span::before {
-    content: '';
-    width: 100%;
-    height: 20%;
-    z-index: -1;
-  } */
-
 .mask .bg {
     height: 80vh;
     position: absolute;
@@ -104,7 +115,7 @@
 }
 
 @media screen and (max-width: 950px) {
-    .mask .bg{
+    .mask .bg {
         opacity: 40%;
     }
 
@@ -115,14 +126,14 @@
     .home .content .dynamicTitle {
         font-size: 90px;
     }
-
 }
 
 @media screen and (max-width: 750px) {
-    .home .content{
+    .home .content {
         align-items: center;
         padding: 0 12vw;
     }
+    
     .home .content .name {
         font-size: 20px;
         font-weight: 600;
@@ -145,6 +156,25 @@
     .Typewriter {
         font-size: 12vw;
         line-height: 60px;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .hero-cta-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .hero-cta-container .btn {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
     }
 
     .hire {

@@ -16,7 +16,7 @@ function Type() {
         loop: true,
         deleteSpeed: 50,
         cursor: '|'
-      }}
+      }}a
     />
   );
 }

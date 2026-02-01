@@ -7,6 +7,14 @@
     z-index: 1;
 }
 
+.timeline-header {
+    font-size: 50px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
 .timeline {
     position: relative;
     max-width: 1000px;
@@ -110,7 +118,6 @@
 
 .expand-button {
     padding: 12px;
-    /* background: linear-gradient(45deg, #00264D, #02386E); */
     background: transparent;
     border: none;
     border-radius: 30px;
@@ -152,7 +159,6 @@
     margin-top: 15px;
 }
 
-/* Add expanded state similar to project card */
 .timeline-item.expanded {
     transform: scale(1.01);
     box-shadow: 0 15px 40px rgba(0, 23, 45, 0.3);
@@ -177,7 +183,6 @@
     100% { opacity: 0.5; }
 }
 
-/* Hover gradient overlay */
 .timeline-item::before {
     content: '';
     position: absolute;
@@ -196,7 +201,6 @@
     opacity: 1;
 }
 
-/* Animation for description */
 @keyframes slideDown {
     from {
         opacity: 0;
@@ -214,20 +218,30 @@
 
 @media screen and (max-width: 1040px), (max-height: 550px) {
     .timeline-container {
-        margin: 50px 7vw 0px 20vw; /* Add left margin to account for sidebar */
+        margin: 50px 7vw 0px 20vw;
         padding: 0 20px;
     }
 
     .timeline {
-        max-width: 900px; /* Reduce max-width for better fit */
+        max-width: 900px;
+    }
+
+    .timeline-header {
+        font-size: 40px;
+        text-align: left;
     }
 }
 
 @media screen and (max-width: 768px) {
     .timeline-container {
-        margin: 80px auto 40px; /* Reset margin for mobile view */
+        margin: 80px auto 40px;
         padding: 0 20px;
-        /* overflow-x: hidden; */
+    }
+
+    .timeline-header {
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 30px;
     }
 
     .timeline::before {
@@ -263,8 +277,8 @@
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .timeline-container {
-        width: calc(100% - 100px); /* Account for sidebar */
-        margin-left: 100px; /* Adjust based on your sidebar width */
+        width: calc(100% - 100px);
+        margin-left: 100px;
         padding: 0 20px;
     }
 
@@ -274,11 +288,11 @@
     }
 
     .timeline-item {
-        width: calc(50% - 40px); /* Reduce width slightly */
+        width: calc(50% - 40px);
     }
 
     .timeline::before {
-        left: calc(50% - 2px); /* Center the timeline line */
+        left: calc(50% - 2px);
     }
 
     .timeline-dot {
@@ -290,7 +304,6 @@
     }
 }
 
-/* Fix for iPad Pro and similar tablet screens */
 @media screen and (min-width: 1024px) and (max-width: 1366px) {
     .timeline-container {
         width: calc(100% - 120px);
@@ -312,6 +325,10 @@
 @media screen and (max-width: 480px) {
     .timeline-container {
         padding: 20px 15px;
+    }
+
+    .timeline-header {
+        font-size: 30px;
     }
 
     .timeline-item {
