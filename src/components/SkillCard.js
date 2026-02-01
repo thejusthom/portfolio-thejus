@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import "../styles/SkillCardStyle.css";
 import { FaJava, FaPython, FaNodeJs, FaAws, FaGithub, FaAngular, FaDocker } from "react-icons/fa";
