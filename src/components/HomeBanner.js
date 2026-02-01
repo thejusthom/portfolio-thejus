@@ -6,19 +6,19 @@ import Typewriter from "./Typewriter";
 export default function Banner({id}) {
   const [terminalText, setTerminalText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
-  
-  const terminalLines = [
-    { text: '$ whoami', delay: 0 },
-    { text: 'thejus-thomson', delay: 800, isOutput: true },
-    { text: '$ cat skills.txt', delay: 1600 },
-    { text: 'Java, Spring Boot, Python, React, AWS, GCP', delay: 2400, isOutput: true },
-    { text: '$ echo $EXPERIENCE', delay: 3200 },
-    { text: '3+ years @ IBM | MS @ Northeastern', delay: 4000, isOutput: true },
-    { text: '$ ./start_collaboration.sh', delay: 4800 },
-    { text: '✓ Ready to build something amazing...', delay: 5600, isOutput: true, isSuccess: true },
-  ];
 
   useEffect(() => {
+    const terminalLines = [
+      { text: '$ whoami', delay: 0 },
+      { text: 'thejus-thomson', delay: 800, isOutput: true },
+      { text: '$ cat skills.txt', delay: 1600 },
+      { text: 'Java, Spring Boot, Python, React, AWS, GCP', delay: 2400, isOutput: true },
+      { text: '$ echo $EXPERIENCE', delay: 3200 },
+      { text: '3+ years @ IBM | MS @ Northeastern', delay: 4000, isOutput: true },
+      { text: '$ ./start_collaboration.sh', delay: 4800 },
+      { text: '✓ Ready to build something amazing...', delay: 5600, isOutput: true, isSuccess: true },
+    ];
+
     let timeouts = [];
     
     terminalLines.forEach((line, index) => {
@@ -89,8 +89,8 @@ export default function Banner({id}) {
               Thejus Thomson
             </motion.div>
             <motion.div className="staticTitle" variants={itemVariants}>
-              Software Engineer
-              {/* <div className='hrLine'></div> */}
+              Backend Engineer
+              <div className='hrLine'></div>
             </motion.div>
             <motion.div variants={itemVariants}>
               <Typewriter/>
