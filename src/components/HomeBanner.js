@@ -89,7 +89,7 @@ export default function Banner({id}) {
               Thejus Thomson
             </motion.div>
             <motion.div className="staticTitle" variants={itemVariants}>
-              Backend Engineer
+              Software Engineer
               <div className='hrLine'></div>
             </motion.div>
             <motion.div variants={itemVariants}>

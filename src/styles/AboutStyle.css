@@ -1,15 +1,20 @@
 .about-container {
     display: flex;
-    margin: 50px 13vw 0 15vw;
+    gap: 80px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 50px 8vw 0 15vw;
     padding-top: 70px;
+    min-height: 80vh;
 }
 
 .about-container .aboutMe-text {
+    flex: 1;
     font-size: 18px;
     font-weight: 400;
     color: var(--text-secondary);
     height: fit-content;
-    max-width: 800px;
+    max-width: 650px;
 }
 
 .aboutMe-text p {
@@ -53,26 +58,59 @@
     border-top: 1px solid var(--border-color);
 }
 
+/* ==================== IMAGE SECTION ==================== */
+.about-image-container {
+    flex: 0 0 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image-container .coding-illustration {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
 /* ==================== RESPONSIVE ==================== */
+@media screen and (max-width: 1400px) {
+    .about-container {
+        gap: 60px;
+    }
+
+    .about-image-container {
+        flex: 0 0 420px;
+    }
+}
+
 @media screen and (max-width: 1150px) {
     .about-container .aboutMe-text {
         font-size: 16px;
     }
+
+    .about-image-container {
+        flex: 0 0 380px;
+    }
 }
 
-@media screen and (max-width: 925px) {
+@media screen and (max-width: 1024px) {
     .about-container {
         flex-direction: column;
         align-items: center;
-        margin: 50px 10vw;
+        gap: 50px;
+        margin: 50px 8vw;
+        min-height: auto;
     }
 
     .about-container .aboutMe-text {
-        text-align: center;
+        max-width: 100%;
     }
 
-    .about-container .aboutMe-text h3 {
-        font-size: 30px;
+    .about-image-container {
+        flex: none;
+        width: 100%;
+        max-width: 500px;
+        order: -1;
     }
 }
 
@@ -80,10 +118,12 @@
     .about-container {
         margin: 0 5vw;
         padding-top: 70px;
+        gap: 40px;
     }
 
     .about-container .aboutMe-text {
         font-size: 15px;
+        text-align: center;
     }
 
     .about-container .aboutMe-text h3 {
@@ -93,5 +133,9 @@
     .about-container .aboutMe-text .resume {
         font-size: 16px;
         padding: 10px 24px;
+    }
+
+    .about-image-container {
+        max-width: 350px;
     }
 }

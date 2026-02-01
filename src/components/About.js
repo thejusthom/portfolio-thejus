@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import '../styles/AboutStyle.css';
+import CodingIllustration from './CodingIllustration';
 
 function About() {
     const ref = useRef(null);
@@ -22,6 +23,16 @@ function About() {
             opacity: 1,
             y: 0,
             transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    const imageVariants = {
+        hidden: { opacity: 0, scale: 0.9, x: 50 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            x: 0,
+            transition: { duration: 0.8, ease: "easeOut", delay: 0.3 }
         }
     };
 
@@ -65,6 +76,13 @@ function About() {
                     <span>Off the keyboard:</span> Manchester City fan ⚽, F1 enthusiast 🏎️, cricket lover 🏏, and still learning the rules of American football. I also referee intramural sports at Northeastern and volunteer at my church's youth ministry.
                 </motion.p>
             </div>
+
+            <motion.div 
+                className="about-image-container"
+                variants={imageVariants}
+            >
+                <CodingIllustration />
+            </motion.div>
         </motion.div>
     );
 }
