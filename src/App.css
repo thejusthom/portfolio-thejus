@@ -1,23 +1,89 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
-*{
+/* ==================== CSS VARIABLES FOR THEMING ==================== */
+:root {
+  /* Dark Theme (Default) */
+  --bg-primary: #000000;
+  --bg-secondary: #0a1628;
+  --bg-tertiary: rgba(2, 56, 110, 0.05);
+  --bg-card: rgba(2, 56, 110, 0.05);
+  --bg-card-hover: rgba(2, 56, 110, 0.1);
+  
+  --text-primary: rgba(255, 255, 255, 0.9);
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-tertiary: rgba(255, 255, 255, 0.6);
+  --text-muted: rgba(255, 255, 255, 0.4);
+  
+  --accent-primary: #1e90ff;
+  --accent-secondary: #72c2ff;
+  --accent-gradient: linear-gradient(to right, #72c2ff, #2c81d5, #074e90);
+  
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-color-hover: rgba(255, 255, 255, 0.2);
+  
+  --shadow-color: rgba(0, 23, 45, 0.3);
+  --shadow-glow: rgba(30, 144, 255, 0.3);
+  
+  --terminal-bg: #0d1117;
+  --terminal-header: #161b22;
+  --terminal-text: #c9d1d9;
+  --terminal-green: #3fb950;
+  --terminal-yellow: #d29922;
+  --terminal-blue: #58a6ff;
+  --terminal-red: #f85149;
+  
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  
+  --text-primary: rgba(15, 23, 42, 0.95);
+  --text-secondary: rgba(15, 23, 42, 0.8);
+  --text-tertiary: rgba(15, 23, 42, 0.6);
+  --text-muted: rgba(15, 23, 42, 0.4);
+  
+  --accent-primary: #0066cc;
+  --accent-secondary: #1e90ff;
+  --accent-gradient: linear-gradient(to right, #0066cc, #1e90ff, #00aaff);
+  
+  --border-color: rgba(15, 23, 42, 0.1);
+  --border-color-hover: rgba(15, 23, 42, 0.2);
+  
+  --shadow-color: rgba(15, 23, 42, 0.1);
+  --shadow-glow: rgba(0, 102, 204, 0.2);
+  
+  --terminal-bg: #1e1e1e;
+  --terminal-header: #323232;
+  --terminal-text: #d4d4d4;
+}
+
+/* ==================== GLOBAL STYLES ==================== */
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   text-decoration: none;
   scroll-behavior: smooth;
 }
 
 body {
-  background: black;
-  /* background: linear-gradient(109.6deg, rgba(0, 0, 0, 0.93) 11.2%, rgb(63, 61, 61) 78.9%); */
+  background: var(--bg-primary);
+  transition: background var(--transition-medium), color var(--transition-medium);
 }
 
 ::-webkit-scrollbar {
-
   display: none;
 }
 
@@ -25,14 +91,15 @@ ul {
   list-style: none;
 }
 
+/* ==================== BUTTONS ==================== */
 .btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #1e90ff;
+  border: 2px solid var(--accent-primary);
   width: fit-content;
   padding: 15px 25px;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 20px;
   border-radius: 10px;
   position: relative;
@@ -40,19 +107,33 @@ ul {
   margin-top: 50px;
   transition: all 0.35s ease-out;
   background-color: transparent;
+  cursor: none;
 }
 
 .btn:hover {
-  background-color: #1e90ff;
+  background-color: var(--accent-primary);
   bottom: 12px;
-  box-shadow: 0 0 20px 1px rgba(205, 106, 139, 0.65);
+  box-shadow: 0 0 20px 1px var(--shadow-glow);
 }
 
 .btn:active {
-  background-color: rgb(141, 33, 78);
+  background-color: var(--accent-secondary);
 }
 
-@media  screen and (max-width: 750px) {
+/* ==================== SECTION ANIMATIONS ==================== */
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media screen and (max-width: 750px) {
   .btn {
     font-size: 16px;
   }

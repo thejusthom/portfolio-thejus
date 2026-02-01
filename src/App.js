@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect, createContext } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "./App.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -6,11 +7,35 @@ import HomeBanner from "./components/HomeBanner";
 import ProjectCard from './components/ProjectCard';
 import AboutMe from './components/About';
 import SkillCard from './components/SkillCard';
+import ThemeToggle from './components/ThemeToggle';
 import AnimatedCursor from "react-animated-cursor";
 import { Helmet } from 'react-helmet';
 import Timeline from "./components/Timeline";
 
+// Create Theme Context
+export const ThemeContext = createContext();
+
 function App() {
+  const [darkMode, setDarkMode] = useState(true);
+
+  useEffect(() => {
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setDarkMode(savedTheme === 'dark');
+    }
+  }, []);
+
+  useEffect(() => {
+    // Apply theme to body
+    document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
   // Case Study Data
   const caseStudies = {
     mslPlatform: {
@@ -110,120 +135,140 @@ function App() {
     }
   };
 
+  // Page transition variants
+  const pageVariants = {
+    initial: { opacity: 0 },
+    animate: { 
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeOut" }
+    },
+    exit: { opacity: 0 }
+  };
+
   return (
-    <>
-    <Helmet>
-        <title>Thejus Thomson | Backend Engineer</title>
-        <meta name="description" content="Software Engineer specializing in Java, Spring Boot, and cloud architecture. 3+ years at IBM building scalable backend systems. MS from Northeastern University." />
-        <meta property="og:title" content="Thejus Thomson | Backend Engineer" />
-        <meta property="og:description" content="Building scalable backend systems. Java, Spring Boot, AWS, GCP. 3+ years at IBM, MS from Northeastern." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://thejusthomson.netlify.app" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Thejus Thomson | Backend Engineer" />
-        <meta name="twitter:description" content="Software Engineer specializing in Java, Spring Boot, and cloud architecture." />
-        <meta name="keywords" content="Software Engineer, Backend Developer, Java, Spring Boot, AWS, GCP, Boston, Northeastern" />
-        <meta name="author" content="Thejus Thomson" />
-    </Helmet>
-    <AnimatedCursor
-      color="#fff"
-      innerSize={12}
-      outerSize={50}
-      innerScale={1}
-      outerScale={2.2}
-      outerAlpha={0}
-      outerStyle={{
-        background: '#ffffff',
-        mixBlendMode: 'exclusion',
-        zIndex: 9999
-      }}
-      innerStyle={{
-        backgroundColor: '#1e90ff',
-        zIndex: 9999
-      }}
-      clickables={[
-        'a',
-        'input[type="text"]',
-        'input[type="email"]',
-        'input[type="number"]',
-        'input[type="submit"]',
-        'input[type="image"]',
-        'label[for]',
-        'select',
-        'textarea',
-        'button',
-        '.link',
-        '.modal-close',
-        '.modal-btn',
-        '.btn',
-        '.expand-button',
-        '.expand-toggle',
-        '.project-wrapper.has-case-study'
-      ]}
-    />
-    <div>
-      <Navbar />
-      <HomeBanner id="home"/>
-      <Timeline id="timeline"/>
-      
-      <ProjectCard
-        id="project"
-        className="odd"
-        projectTitle="MSL Practice Platform"
-        award="🏆 Hackathon Winner"
-        projectDesc="AI-powered Medical Science Liaison training platform. Features RAG-based document retrieval, real-time practice scenarios with AI feedback, and performance analytics."
-        techStack={["React", "Python", "OpenAI API", "RAG", "LangChain", "FastAPI"]}
-        projectLink="https://github.com/guhansp/MSL_Practice_Gym_Oats"
-        deployedLink="https://msl-practice-gym-oats.vercel.app/"
-        caseStudy={caseStudies.mslPlatform}
+    <ThemeContext.Provider value={{ darkMode, toggleTheme }}>
+      <Helmet>
+          <title>Thejus Thomson</title>
+          <meta name="description" content="Software Engineer specializing in Java, Spring Boot, and cloud architecture. 3+ years at IBM building scalable backend systems. MS from Northeastern University." />
+          <meta property="og:title" content="Thejus Thomson | Backend Engineer" />
+          <meta property="og:description" content="Building scalable backend systems. Java, Spring Boot, AWS, GCP. 3+ years at IBM, MS from Northeastern." />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://thejusthomson.netlify.app" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Thejus Thomson | Backend Engineer" />
+          <meta name="twitter:description" content="Software Engineer specializing in Java, Spring Boot, and cloud architecture." />
+          <meta name="keywords" content="Software Engineer, Backend Developer, Java, Spring Boot, AWS, GCP, Boston, Northeastern" />
+          <meta name="author" content="Thejus Thomson" />
+      </Helmet>
+      <AnimatedCursor
+        color="#fff"
+        innerSize={12}
+        outerSize={50}
+        innerScale={1}
+        outerScale={2.2}
+        outerAlpha={0}
+        outerStyle={{
+          background: darkMode ? '#ffffff' : '#000000',
+          mixBlendMode: 'exclusion',
+          zIndex: 9999
+        }}
+        innerStyle={{
+          backgroundColor: '#1e90ff',
+          zIndex: 9999
+        }}
+        clickables={[
+          'a',
+          'input[type="text"]',
+          'input[type="email"]',
+          'input[type="number"]',
+          'input[type="submit"]',
+          'input[type="image"]',
+          'label[for]',
+          'select',
+          'textarea',
+          'button',
+          '.link',
+          '.modal-close',
+          '.modal-btn',
+          '.btn',
+          '.expand-button',
+          '.expand-toggle',
+          '.project-wrapper.has-case-study',
+          '.theme-toggle'
+        ]}
       />
+      <ThemeToggle />
+      <AnimatePresence mode="wait">
+        <motion.div
+          key="main"
+          variants={pageVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+        >
+          <Navbar />
+          <HomeBanner id="home"/>
+          <Timeline id="timeline"/>
+          
+          <ProjectCard
+            id="project"
+            className="odd"
+            projectTitle="MSL Practice Platform"
+            award="🏆 Hackathon Winner"
+            projectDesc="AI-powered Medical Science Liaison training platform. Features RAG-based document retrieval, real-time practice scenarios with AI feedback, and performance analytics."
+            techStack={["React", "Python", "OpenAI API", "RAG", "LangChain", "FastAPI"]}
+            projectLink="https://github.com/thejusthom"
+            deployedLink="https://msl-practice-gym-oats.vercel.app/"
+            caseStudy={caseStudies.mslPlatform}
+          />
 
-      <ProjectCard
-        projectTitle="locALL"
-        projectDesc="Community platform connecting neighbors through local events, marketplace, food sharing, and donation coordination — all filtered by zip code."
-        techStack={["React", "Node.js", "Express", "MongoDB", "WebSocket", "REST API"]}
-        projectLink="https://github.com/thejusthom/locALL"
-        caseStudy={caseStudies.locall}
-      />
+          <ProjectCard
+            projectTitle="locALL"
+            projectDesc="Community platform connecting neighbors through local events, marketplace, food sharing, and donation coordination — all filtered by zip code."
+            techStack={["React", "Node.js", "Express", "MongoDB", "WebSocket", "REST API"]}
+            projectLink="https://github.com/thejusthom/locALL"
+            caseStudy={caseStudies.locall}
+          />
 
-      <ProjectCard
-        className="odd"
-        projectTitle="CloudNotifyOps"
-        projectDesc="Serverless notification architecture on GCP demonstrating event-driven design, Infrastructure as Code, and CI/CD best practices."
-        techStack={["GCP", "Cloud Functions", "Pub/Sub", "Terraform", "GitHub Actions"]}
-        projectLink="https://github.com/thejusthom/CloudNotifyOps"
-        caseStudy={caseStudies.cloudNotifyOps}
-      />
+          <ProjectCard
+            className="odd"
+            projectTitle="CloudNotifyOps"
+            projectDesc="Serverless notification architecture on GCP demonstrating event-driven design, Infrastructure as Code, and CI/CD best practices."
+            techStack={["GCP", "Cloud Functions", "Pub/Sub", "Terraform", "GitHub Actions"]}
+            projectLink="https://github.com/thejusthom/CloudNotifyOps"
+            caseStudy={caseStudies.cloudNotifyOps}
+          />
 
-      <ProjectCard
-        projectTitle="Hospital Management System"
-        projectDesc="Healthcare data management with 17 interconnected tables, specialized views for reporting, and optimized queries for performance."
-        techStack={["SQL", "Oracle", "PL/SQL", "Database Design", "ERD"]}
-        projectLink="https://github.com/thejusthom/dmdd-group10"
-        caseStudy={caseStudies.hospitalManagement}
-      />
+          <ProjectCard
+            projectTitle="Hospital Management System"
+            projectDesc="Healthcare data management with 17 interconnected tables, specialized views for reporting, and optimized queries for performance."
+            techStack={["SQL", "Oracle", "PL/SQL", "Database Design", "ERD"]}
+            projectLink="https://github.com/thejusthom/dmdd-group10"
+            caseStudy={caseStudies.hospitalManagement}
+          />
 
-      <ProjectCard
-        className="odd"
-        projectTitle="School Management System"
-        projectDesc="Full-stack Java application with Swing GUI demonstrating OOP principles, design patterns, and database integration."
-        techStack={["Java", "Swing", "MySQL", "JDBC", "Maven", "MVC"]}
-        projectLink="https://github.com/thejusthom/School-Management-System"
-        caseStudy={caseStudies.schoolManagement}
-      />
+          <ProjectCard
+            className="odd"
+            projectTitle="School Management System"
+            projectDesc="Full-stack Java application with Swing GUI demonstrating OOP principles, design patterns, and database integration."
+            techStack={["Java", "Swing", "MySQL", "JDBC", "Maven", "MVC"]}
+            projectLink="https://github.com/thejusthom/School-Management-System"
+            caseStudy={caseStudies.schoolManagement}
+          />
 
-      <ProjectCard
-        projectTitle="FlipZon"
-        projectDesc="E-commerce web platform with responsive UI for online shopping, showcasing frontend development skills."
-        techStack={["HTML", "CSS", "JavaScript"]}
-        projectLink="https://github.com/ThejusThomson/FlipZon"
-      />
+          <ProjectCard
+            projectTitle="FlipZon"
+            projectDesc="E-commerce web platform with responsive UI for online shopping, showcasing frontend development skills."
+            techStack={["HTML", "CSS", "JavaScript"]}
+            projectLink="https://github.com/ThejusThomson/FlipZon"
+          />
 
-      <AboutMe id="about" />
-      <SkillCard id="skills" />
-      <Footer />
-    </div>
-    </>
+          <AboutMe id="about" />
+          <SkillCard id="skills" />
+          <Footer />
+        </motion.div>
+      </AnimatePresence>
+    </ThemeContext.Provider>
   );
 }
 

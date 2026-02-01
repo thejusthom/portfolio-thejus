@@ -10,7 +10,7 @@
 .timeline-header {
     font-size: 50px;
     font-weight: 600;
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 50px;
     text-align: center;
 }
@@ -28,7 +28,7 @@
     position: absolute;
     width: 4px;
     height: 100%;
-    background: linear-gradient(to right, #72c2ff, #2c81d5, #074e90);
+    background: var(--accent-gradient);
     left: 50%;
     transform: translateX(-50%);
     border-radius: 2px;
@@ -38,19 +38,21 @@
     margin: 40px 0;
     position: relative;
     width: calc(50% - 30px);
-    background: rgba(2, 56, 110, 0.05);
+    background: var(--bg-card);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
+    cursor: pointer;
 }
 
 .timeline-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 23, 45, 0.3);
-    background: rgba(2, 56, 110, 0.1);
+    box-shadow: 0 10px 30px var(--shadow-color);
+    background: var(--bg-card-hover);
+    border-color: var(--accent-primary);
 }
 
 .timeline-item:nth-child(odd) {
@@ -68,7 +70,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 23, 45, 0.2);
+    box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 .timeline-icon {
@@ -82,7 +84,7 @@
 }
 
 .timeline-year {
-    color: #2774ae;
+    color: var(--accent-primary);
     font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 12px;
@@ -92,7 +94,7 @@
     margin-bottom: 20px;
     font-size: 1.5rem;
     font-weight: 600;
-    background: linear-gradient(to right, #72c2ff, #2c81d5, #074e90);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -106,12 +108,12 @@
     left: 0;
     width: 60px;
     height: 3px;
-    background: linear-gradient(to right, #72c2ff, #2c81d5, #074e90);
+    background: var(--accent-gradient);
     border-radius: 2px;
 }
 
 .timeline-institution {
-    color: #e0e0e0;
+    color: var(--text-secondary);
     font-size: 1.1rem;
     margin-bottom: 20px;
 }
@@ -121,7 +123,7 @@
     background: transparent;
     border: none;
     border-radius: 30px;
-    color: white;
+    color: var(--text-secondary);
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -129,13 +131,12 @@
     justify-content: center;
     width: 40px;
     height: 40px;
-    box-shadow: 0 4px 15px rgba(0, 23, 45, 0.2);
     margin: 15px 0;
 }
 
 .expand-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 23, 45, 0.3);
+    color: var(--accent-primary);
 }
 
 .expand-button.active {
@@ -144,24 +145,15 @@
 
 .timeline-description {
     white-space: pre-line;
-    color: #e0e0e0;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    max-height: 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
     overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-}
-
-.timeline-description.active {
-    max-height: 350px;
-    opacity: 1;
-    margin-top: 15px;
 }
 
 .timeline-item.expanded {
-    transform: scale(1.01);
-    box-shadow: 0 15px 40px rgba(0, 23, 45, 0.3);
+    border-color: var(--accent-primary);
+    box-shadow: 0 15px 40px var(--shadow-color);
 }
 
 .timeline-item.expanded::after {
@@ -171,59 +163,17 @@
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, #00172D, #02386E, #0052A2);
+    background: var(--accent-gradient);
     border-radius: 22px;
     z-index: -1;
-    animation: borderGlow 5s linear infinite;
+    opacity: 0.3;
 }
 
-@keyframes borderGlow {
-    0% { opacity: 0.5; }
-    50% { opacity: 1; }
-    100% { opacity: 0.5; }
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(0, 23, 45, 0.1), rgba(2, 56, 110, 0.1));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 20px;
-    pointer-events: none;
-}
-
-.timeline-item:hover::before {
-    opacity: 1;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.timeline-description.active {
-    animation: slideDown 0.3s ease forwards;
-}
-
-@media screen and (max-width: 1040px), (max-height: 550px) {
+/* ==================== RESPONSIVE ==================== */
+@media screen and (max-width: 1040px) {
     .timeline-container {
         margin: 50px 7vw 0px 20vw;
         padding: 0 20px;
-    }
-
-    .timeline {
-        max-width: 900px;
     }
 
     .timeline-header {
@@ -261,7 +211,7 @@
     }
 
     .timeline-title {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
 
     .timeline-year,
@@ -272,53 +222,6 @@
     
     .timeline-icon {
         font-size: 16px;
-    }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-    .timeline-container {
-        width: calc(100% - 100px);
-        margin-left: 100px;
-        padding: 0 20px;
-    }
-
-    .timeline {
-        max-width: 100%;
-        padding: 40px 20px;
-    }
-
-    .timeline-item {
-        width: calc(50% - 40px);
-    }
-
-    .timeline::before {
-        left: calc(50% - 2px);
-    }
-
-    .timeline-dot {
-        left: -40px;
-    }
-
-    .timeline-item:nth-child(odd) .timeline-dot {
-        right: -40px;
-    }
-}
-
-@media screen and (min-width: 1024px) and (max-width: 1366px) {
-    .timeline-container {
-        width: calc(100% - 120px);
-        margin-left: 120px;
-        padding: 0 30px;
-        overflow-x: hidden;
-    }
-
-    .timeline {
-        width: 100%;
-        max-width: none;
-    }
-
-    .timeline-item {
-        width: calc(50% - 50px);
     }
 }
 
@@ -336,18 +239,12 @@
     }
 
     .timeline-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     .timeline-year,
     .timeline-institution,
     .timeline-description {
         font-size: 0.9rem;
-    }
-
-    .expand-button {
-        width: 35px;
-        height: 35px;
-        padding: 8px;
     }
 }

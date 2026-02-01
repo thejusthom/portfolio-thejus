@@ -6,7 +6,9 @@ export default function Footer() {
   
   return (
     <div className='footer'>
-        Made with ❤️ by Thejus Thomson © {currentYear}
+        <span>Made with ❤️ by Thejus Thomson</span>
+        <span className="footer-divider">•</span>
+        <span>© {currentYear}</span>
     </div>
   );
 }

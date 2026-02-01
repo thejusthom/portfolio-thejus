@@ -134,7 +134,7 @@ export default function Navbar() {
           {click ? (
             <FaTimes className="bars" size={25} />
           ) : (
-            <FaBars className="bars" size={25} style={{ color: "#fff" }} />
+            <FaBars className="bars" size={25} />
           )}
         </div>
       </nav>

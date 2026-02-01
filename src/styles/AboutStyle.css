@@ -4,85 +4,59 @@
     padding-top: 70px;
 }
 
-.profile-photo {
-    margin-left: 50px;
-    height: fit-content;
-    padding: 0;
-}
-
-.profile-photo .heading {
-    font-size: 22px;
-    font-weight: 600;
-    margin-top: 100px;
-    color: #1e90ff;
-}
-
-.profile-photo .img {
-    width: 100%;
-    z-index: -3;
-}
-
- .about-container .name {
-    line-height: 85px;
-    position: absolute;
-    right: 6.5vw;
-    padding-top: 75px;
-    width: 110px;
-    overflow-wrap: break-word;
-    color: #1e90ff;
-    text-transform: uppercase;
-    z-index: 0;
-    font-size: 100px;
-    font-family: 'Intro', sans-serif;
-    font-weight: 800;
-    text-transform: uppercase;
-    background: -webkit-linear-gradient(-86deg, #ffe1a0  5%, #f67280 53%, #1e90ff 91%);
-    -webkit-background-clip: text;
-    -webkit-text-stroke: 4px transparent;
-    background-clip: text;
-    /* color: #2c2c2c; */
-    color: black;
-}
-
 .about-container .aboutMe-text {
     font-size: 18px;
-    font-weight: 200;
-    color: #fff;
+    font-weight: 400;
+    color: var(--text-secondary);
     height: fit-content;
+    max-width: 800px;
+}
+
+.aboutMe-text p {
+    margin-bottom: 20px;
+    line-height: 1.8;
 }
 
 .aboutMe-text span {
-    color: #1e90ff;
+    color: var(--accent-primary);
+    font-weight: 500;
 }
 
 .about-container .aboutMe-text h3 {
-    color: #fff;    
+    color: var(--text-primary);
     font-size: 36px;
-    font-weight: 500;
-    margin-bottom: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
 }
 
 .about-container .aboutMe-text .resume {
-    color: #1e90ff;
-    border-bottom: 2.5px solid #1e90ff;
-    transition: all 0.3s ease-in-out;
     display: inline-block;
-    font-weight: 800;
+    color: var(--accent-primary);
+    font-weight: 600;
+    font-size: 18px;
+    padding: 12px 28px;
+    border: 2px solid var(--accent-primary);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    margin: 10px 0 30px;
 }
 
 .about-container .aboutMe-text .resume:hover {
-    transform: scale(1.05);
+    background: var(--accent-primary);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--shadow-glow);
 }
 
+.about-hobbies {
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* ==================== RESPONSIVE ==================== */
 @media screen and (max-width: 1150px) {
     .about-container .aboutMe-text {
         font-size: 16px;
-    }
-    .about-container .name {
-        font-size: 80px;
-        width: 80px;
-        line-height: 70px;
-        right: 8vw;
     }
 }
 
@@ -90,27 +64,34 @@
     .about-container {
         flex-direction: column;
         align-items: center;
-    }
-
-    .heading, .about-container .name {
-        display: none;
+        margin: 50px 10vw;
     }
 
     .about-container .aboutMe-text {
         text-align: center;
     }
 
-    .img {
-        display: none;
-        margin-top: 50px;
-        max-width: 400px;
+    .about-container .aboutMe-text h3 {
+        font-size: 30px;
     }
 }
 
 @media screen and (max-width: 750px) {
     .about-container {
-        margin-left: 9vw;
-        margin-top: 0;
+        margin: 0 5vw;
         padding-top: 70px;
+    }
+
+    .about-container .aboutMe-text {
+        font-size: 15px;
+    }
+
+    .about-container .aboutMe-text h3 {
+        font-size: 26px;
+    }
+
+    .about-container .aboutMe-text .resume {
+        font-size: 16px;
+        padding: 10px 24px;
     }
 }

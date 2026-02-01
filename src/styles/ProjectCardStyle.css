@@ -9,11 +9,11 @@
 
 .project-wrapper {
     position: relative;
-    background: rgba(2, 56, 110, 0.05);
+    background: var(--bg-card);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
 }
@@ -23,9 +23,9 @@
 }
 
 .project-wrapper:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 23, 45, 0.3);
-    background: rgba(2, 56, 110, 0.1);
+    box-shadow: 0 10px 30px var(--shadow-color);
+    background: var(--bg-card-hover);
+    border-color: var(--accent-primary);
 }
 
 .project-header {
@@ -61,7 +61,7 @@
     margin: 0;
     font-size: 2rem;
     font-weight: 600;
-    background: linear-gradient(to right, #72c2ff, #2c81d5, #074e90);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -75,12 +75,12 @@
     left: 0;
     width: 60px;
     height: 3px;
-    background: linear-gradient(to right, #72c2ff, #2c81d5, #074e90);
+    background: var(--accent-gradient);
     border-radius: 2px;
 }
 
 .project-summary {
-    color: #e0e0e0;
+    color: var(--text-secondary);
     font-size: 1.05rem;
     line-height: 1.7;
     margin: 20px 0;
@@ -96,7 +96,7 @@
 
 .tech-tag {
     background: rgba(30, 144, 255, 0.15);
-    color: #72c2ff;
+    color: var(--accent-secondary);
     font-size: 0.85rem;
     padding: 6px 14px;
     border-radius: 20px;
@@ -117,7 +117,7 @@
     margin-top: 25px;
 }
 
-.btn {
+.project-actions .btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -129,29 +129,30 @@
     transition: all 0.3s ease;
     border: none;
     text-decoration: none;
+    margin-top: 0;
 }
 
 .github-btn {
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    color: #fff;
+    background: transparent !important;
+    border: 2px solid var(--border-color-hover) !important;
+    color: var(--text-primary);
 }
 
 .github-btn:hover {
-    border-color: #1e90ff;
-    background: rgba(30, 144, 255, 0.1);
+    border-color: var(--accent-primary) !important;
+    background: rgba(30, 144, 255, 0.1) !important;
     transform: translateY(-2px);
 }
 
 .case-study-btn {
-    background: linear-gradient(45deg, #1e90ff, #0066cc);
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+    background: linear-gradient(45deg, var(--accent-primary), #0066cc) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 15px var(--shadow-glow);
 }
 
 .case-study-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(30, 144, 255, 0.4);
+    box-shadow: 0 6px 20px var(--shadow-glow);
 }
 
 .case-study-btn .btn-arrow {
@@ -163,13 +164,13 @@
 }
 
 .live-btn {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color) !important;
 }
 
 .live-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.15) !important;
     transform: translateY(-2px);
 }
 
@@ -187,47 +188,29 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-    animation: fadeIn 0.3s ease;
     cursor: none;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 .modal-content {
-    background: linear-gradient(180deg, #0a1628 0%, #0d1f3c 100%);
+    background: var(--bg-secondary);
     border-radius: 24px;
     max-width: 900px;
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
-    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: none;
-}
-
-@keyframes slideUp {
-    from { 
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to { 
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .modal-close {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--border-color);
     border: none;
-    color: #fff;
+    color: var(--text-primary);
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -246,7 +229,7 @@
 
 .modal-header {
     padding: 50px 50px 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .modal-award {
@@ -267,7 +250,7 @@
 .modal-title {
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(to right, #72c2ff, #2c81d5, #074e90);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -276,7 +259,7 @@
 }
 
 .modal-subtitle {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-tertiary);
     font-size: 1.15rem;
     margin: 0;
     line-height: 1.5;
@@ -297,14 +280,14 @@
 .case-section h3 {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #1e90ff;
+    color: var(--accent-primary);
     margin: 0 0 15px 0;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .case-section p {
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-secondary);
     font-size: 1.05rem;
     line-height: 1.8;
     margin: 0;
@@ -320,7 +303,7 @@
     position: relative;
     padding-left: 28px;
     margin-bottom: 14px;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-secondary);
     font-size: 1.05rem;
     line-height: 1.7;
 }
@@ -329,7 +312,7 @@
     content: '→';
     position: absolute;
     left: 0;
-    color: #1e90ff;
+    color: var(--accent-primary);
     font-weight: bold;
 }
 
@@ -341,7 +324,7 @@
 
 .modal-tech-tag {
     background: rgba(30, 144, 255, 0.15);
-    color: #72c2ff;
+    color: var(--accent-secondary);
     font-size: 0.9rem;
     padding: 8px 18px;
     border-radius: 25px;
@@ -356,8 +339,8 @@
 }
 
 .impact-card {
-    background: rgba(30, 144, 255, 0.08);
-    border: 1px solid rgba(30, 144, 255, 0.2);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 24px;
     text-align: center;
@@ -365,15 +348,16 @@
 }
 
 .impact-card:hover {
-    background: rgba(30, 144, 255, 0.12);
+    background: var(--bg-card-hover);
     transform: translateY(-3px);
+    border-color: var(--accent-primary);
 }
 
 .impact-metric {
     display: block;
     font-size: 2rem;
     font-weight: 700;
-    background: linear-gradient(to right, #72c2ff, #1e90ff);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -382,14 +366,14 @@
 
 .impact-label {
     display: block;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-tertiary);
     font-size: 0.9rem;
     line-height: 1.4;
 }
 
 .modal-footer {
     padding: 30px 50px 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border-color);
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
@@ -419,7 +403,6 @@
 
 .modal-btn.github svg {
     color: #000;
-    fill: #000;
 }
 
 .modal-btn.github:hover {
@@ -428,13 +411,13 @@
 }
 
 .modal-btn.live {
-    background: linear-gradient(45deg, #1e90ff, #0066cc);
+    background: linear-gradient(45deg, var(--accent-primary), #0066cc);
     color: #fff;
 }
 
 .modal-btn.live:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(30, 144, 255, 0.4);
+    box-shadow: 0 10px 30px var(--shadow-glow);
 }
 
 /* Scrollbar styling for modal */
@@ -443,17 +426,14 @@
 }
 
 .modal-content::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-tertiary);
     border-radius: 4px;
 }
 
 .modal-content::-webkit-scrollbar-thumb {
-    background: rgba(30, 144, 255, 0.3);
+    background: var(--accent-primary);
     border-radius: 4px;
-}
-
-.modal-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(30, 144, 255, 0.5);
+    opacity: 0.5;
 }
 
 /* ==================== RESPONSIVE STYLES ==================== */
@@ -490,7 +470,7 @@
         flex-direction: column;
     }
 
-    .btn {
+    .project-actions .btn {
         width: 100%;
         justify-content: center;
     }
@@ -573,7 +553,7 @@
         padding: 5px 12px;
     }
 
-    .btn {
+    .project-actions .btn {
         padding: 10px 20px;
         font-size: 0.9rem;
     }

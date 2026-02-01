@@ -1,12 +1,23 @@
 .footer {
     width: 100%;
     padding: 2rem;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    white-space: nowrap;
+    gap: 12px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-tertiary);
+    background: var(--bg-primary);
+    transition: all var(--transition-medium);
+}
+
+.footer-divider {
+    opacity: 0.5;
+}
+
+.footer:hover {
+    color: var(--text-secondary);
 }

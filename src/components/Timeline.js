@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import '../styles/TimelineStyle.css';
 import { FaChevronDown, FaGraduationCap, FaBriefcase } from 'react-icons/fa';
 
 function Timeline() {
   const [activeItem, setActiveItem] = useState(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const handleItemClick = (id) => {
     setActiveItem(activeItem === id ? null : id);
@@ -24,7 +27,7 @@ function Timeline() {
     },
     {
       id: 2,
-      year: "Spring 2025",
+      year: "Summer 2024",
       title: "Software Engineering Co-op",
       institution: "Fashion Index",
       description: 
@@ -72,15 +75,57 @@ function Timeline() {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const itemVariantsRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
-    <div className="timeline-container" id="timeline">
-      <div className="timeline-header">Experience & Education</div>
-      <div className="timeline">
-        {timelineData.map((item) => (
-          <div 
+    <div className="timeline-container" id="timeline" ref={ref}>
+      <motion.div 
+        className="timeline-header"
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+      >
+        Experience & Education
+      </motion.div>
+      <motion.div 
+        className="timeline"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
+        {timelineData.map((item, index) => (
+          <motion.div 
             key={item.id}
             className={`timeline-item ${item.type} ${activeItem === item.id ? 'expanded' : ''}`}
             onClick={() => handleItemClick(item.id)}
+            variants={index % 2 === 0 ? itemVariantsRight : itemVariants}
+            whileHover={{ scale: 1.02 }}
           >
             <div className="timeline-dot">
               {item.type === 'education' ? 
@@ -102,13 +147,21 @@ function Timeline() {
               >
                 <FaChevronDown />
               </button>
-              <div className={`timeline-description ${activeItem === item.id ? 'active' : ''}`}>
+              <motion.div 
+                className={`timeline-description ${activeItem === item.id ? 'active' : ''}`}
+                initial={false}
+                animate={{ 
+                  height: activeItem === item.id ? 'auto' : 0,
+                  opacity: activeItem === item.id ? 1 : 0
+                }}
+                transition={{ duration: 0.3 }}
+              >
                 {item.description}
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
