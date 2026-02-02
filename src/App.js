@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ReactGA from 'react-ga4';
 import "./App.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -13,11 +14,19 @@ import AnimatedCursor from "react-animated-cursor";
 import { Helmet } from 'react-helmet';
 import Timeline from "./components/Timeline";
 
+// Initialize Google Analytics
+ReactGA.initialize('G-7YH7MKLFQ9');
+
 // Create Theme Context
 export const ThemeContext = createContext();
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+
+  // Track page views
+  useEffect(() => {
+    ReactGA.send({ hitType: 'pageview', page: window.location.pathname });
+  }, []);
 
   useEffect(() => {
     // Check for saved theme preference
@@ -151,12 +160,12 @@ function App() {
       <Helmet>
           <title>Thejus Thomson</title>
           <meta name="description" content="Software Engineer specializing in Java, Spring Boot, and cloud architecture. 3+ years at IBM building scalable backend systems. MS from Northeastern University." />
-          <meta property="og:title" content="Thejus Thomson | Backend Engineer" />
+          <meta property="og:title" content="Thejus Thomson" />
           <meta property="og:description" content="Building scalable backend systems. Java, Spring Boot, AWS, GCP. 3+ years at IBM, MS from Northeastern." />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://thejusthomson.netlify.app" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Thejus Thomson | Backend Engineer" />
+          <meta name="twitter:title" content="Thejus Thomson" />
           <meta name="twitter:description" content="Software Engineer specializing in Java, Spring Boot, and cloud architecture." />
           <meta name="keywords" content="Software Engineer, Backend Developer, Java, Spring Boot, AWS, GCP, Boston, Northeastern" />
           <meta name="author" content="Thejus Thomson" />
