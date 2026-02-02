@@ -8,6 +8,7 @@ import ProjectCard from './components/ProjectCard';
 import AboutMe from './components/About';
 import SkillCard from './components/SkillCard';
 import ThemeToggle from './components/ThemeToggle';
+import ChatWidget from './components/ChatWidget';
 import AnimatedCursor from "react-animated-cursor";
 import { Helmet } from 'react-helmet';
 import Timeline from "./components/Timeline";
@@ -194,10 +195,16 @@ function App() {
           '.expand-button',
           '.expand-toggle',
           '.project-wrapper.has-case-study',
-          '.theme-toggle'
+          '.theme-toggle',
+          '.chat-toggle',
+          '.chat-close',
+          '.chat-send',
+          '.suggestion-chip',
+          '.chat-input'
         ]}
       />
       <ThemeToggle />
+      <ChatWidget />
       <AnimatePresence mode="wait">
         <motion.div
           key="main"
