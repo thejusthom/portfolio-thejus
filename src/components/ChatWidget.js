@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaComments, FaTimes, FaPaperPlane, FaRobot } from 'react-icons/fa';
+import { ThemeContext } from '../App';
 import '../styles/ChatWidget.css';
 
 // Update this after deploying your backend
@@ -18,6 +19,7 @@ const ChatWidget = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const { darkMode } = useContext(ThemeContext);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -87,9 +89,47 @@ const ChatWidget = () => {
     "Are you available for hire?"
   ];
 
-  const handleSuggestedQuestion = (question) => {
-    setInput(question);
-    inputRef.current?.focus();
+  const handleSuggestedQuestion = async (question) => {
+    if (isLoading) return;
+    
+    // Add user message immediately
+    setMessages(prev => [...prev, { role: 'user', content: question }]);
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: question,
+          history: messages.slice(-10).map(m => ({
+            role: m.role,
+            content: m.content
+          }))
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response');
+      }
+
+      const data = await response.json();
+      
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: data.reply 
+      }]);
+    } catch (error) {
+      console.error('Chat error:', error);
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: "Sorry, I'm having trouble connecting right now. Feel free to reach out to Thejus directly at thomson.th@northeastern.edu!" 
+      }]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
