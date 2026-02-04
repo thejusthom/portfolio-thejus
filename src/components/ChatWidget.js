@@ -1,10 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaComments, FaTimes, FaPaperPlane, FaRobot } from 'react-icons/fa';
+import ReactGA from 'react-ga4';
 import '../styles/ChatWidget.css';
 
 // Update this after deploying your backend
 const API_URL = process.env.REACT_APP_CHAT_API_URL || 'https://api-portfolio-chatbot.vercel.app/api/chat.js';
+
+// Track chat events
+const trackChatEvent = (action, label) => {
+  ReactGA.event({
+    category: 'Chat',
+    action: action,
+    label: label,
+  });
+};
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,6 +50,9 @@ const ChatWidget = () => {
     const userMessage = input.trim();
     setInput('');
     
+    // Track message sent
+    trackChatEvent('Message Sent', userMessage);
+    
     // Add user message
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
     setIsLoading(true);
@@ -71,6 +84,7 @@ const ChatWidget = () => {
       }]);
     } catch (error) {
       console.error('Chat error:', error);
+      trackChatEvent('Error', 'API connection failed');
       setMessages(prev => [...prev, { 
         role: 'assistant', 
         content: "Sorry, I'm having trouble connecting right now. Feel free to reach out to Thejus directly at thomson.th@northeastern.edu!" 
@@ -89,6 +103,9 @@ const ChatWidget = () => {
 
   const handleSuggestedQuestion = async (question) => {
     if (isLoading) return;
+    
+    // Track suggested question click
+    trackChatEvent('Suggestion Clicked', question);
     
     // Add user message immediately
     setMessages(prev => [...prev, { role: 'user', content: question }]);
@@ -121,6 +138,7 @@ const ChatWidget = () => {
       }]);
     } catch (error) {
       console.error('Chat error:', error);
+      trackChatEvent('Error', 'API connection failed');
       setMessages(prev => [...prev, { 
         role: 'assistant', 
         content: "Sorry, I'm having trouble connecting right now. Feel free to reach out to Thejus directly at thomson.th@northeastern.edu!" 
@@ -130,12 +148,18 @@ const ChatWidget = () => {
     }
   };
 
+  const handleToggleChat = () => {
+    const newState = !isOpen;
+    setIsOpen(newState);
+    trackChatEvent(newState ? 'Chat Opened' : 'Chat Closed', '');
+  };
+
   return (
     <>
       {/* Chat Toggle Button */}
       <motion.button
         className={`chat-toggle ${isOpen ? 'open' : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggleChat}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         aria-label={isOpen ? 'Close chat' : 'Open chat'}
