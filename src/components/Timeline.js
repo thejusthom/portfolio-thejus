@@ -19,7 +19,7 @@ function Timeline() {
       title: "MS in Software Engineering",
       institution: "Northeastern University, Boston",
       description: 
-        "• GPA: 3.7/4.0\n" +
+        "• GPA: 3.8/4.0\n" +
         "• Core coursework: Object-Oriented Design, Algorithms, Cloud Computing, Database Management\n" +
         "• Built locALL community platform and CloudNotifyOps serverless architecture\n" +
         "• Won 1st place at DNATE Hackathon — AI-powered Medical Science Liaison platform",
@@ -27,7 +27,7 @@ function Timeline() {
     },
     {
       id: 2,
-      year: "Summer 2024",
+      year: "Spring 2025",
       title: "Software Engineering Co-op",
       institution: "Fashion Index",
       description: 
@@ -65,7 +65,7 @@ function Timeline() {
     {
       id: 5,
       year: "2016 - 2020",
-      title: "B.E. Electronics & Communication",
+      title: "B.E. Electronics Engineering",
       institution: "Anna University",
       description: 
         "• Strong foundation in Data Structures, OOP, and algorithms\n" +
