@@ -8,11 +8,10 @@ import '../styles/ChatWidget.css';
 const API_URL = process.env.REACT_APP_CHAT_API_URL || 'https://api-portfolio-chatbot.vercel.app/api/chat.js';
 
 // Track chat events
-const trackChatEvent = (action, label) => {
-  ReactGA.event({
+const trackChatEvent = (action, message) => {
+  ReactGA.event(action, {
     category: 'Chat',
-    action: action,
-    label: label,
+    message_text: message,
   });
 };
 
