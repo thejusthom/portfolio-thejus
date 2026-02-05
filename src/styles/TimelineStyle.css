@@ -20,7 +20,7 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 40px 0;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .timeline::before {
@@ -44,8 +44,9 @@
     padding: 40px;
     border: 1px solid var(--border-color);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
+    overflow: visible;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .timeline-item:hover {
@@ -149,6 +150,7 @@
     font-size: 1rem;
     line-height: 1.8;
     overflow: hidden;
+    word-wrap: break-word;
 }
 
 .timeline-item.expanded {
