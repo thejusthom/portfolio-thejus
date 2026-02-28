@@ -106,33 +106,34 @@
 
 @media screen and (max-width: 750px) {
     .theme-toggle-container {
-        top: 10px;
-        right: 56px;               /* sits left of hamburger */
-        z-index: 300;
+        position: fixed;
+        top: 14px;
+        right: 72px;               /* 25px hamburger + 20px nav padding + 8px gap + 56px track = clear */
+        z-index: 1100;
     }
 
     .toggle-track {
-        width: 60px;
-        height: 32px;
+        width: 56px;
+        height: 30px;
     }
 
     .toggle-thumb {
-        top: 4px;
+        top: 3px;
         width: 24px;
         height: 24px;
     }
 
     .theme-toggle-btn.light .toggle-thumb {
-        top: 4px;
-        right: calc(100% - 28px);
+        top: 3px;
+        right: calc(100% - 27px);
     }
 
     .toggle-icon {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .toggle-icons {
-        padding: 0 8px;
+        padding: 0 7px;
     }
 }
 
@@ -153,8 +154,8 @@
 
 @media screen and (max-width: 750px) {
     .theme-toggle-container {
-        top: 16px;
-        right: 16px;
+        top: 24px;
+        right: 60px;
     }
 
     .toggle-track {
