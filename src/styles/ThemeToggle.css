@@ -82,26 +82,58 @@
 
 .toggle-thumb {
     position: absolute;
-    top: 50%;                          /* FIX: vertically center */
-    transform: translateY(-50%);       /* FIX: vertically center */
+    top: 4px;                          /* (36px track - 28px thumb) / 2 = 4px — no transform needed */
     width: 28px;
     height: 28px;
-    background: linear-gradient(145deg, #2A2A26, #1A1A17); /* dark warm thumb */
+    background: linear-gradient(145deg, #2A2A26, #1A1A17);
     border-radius: 50%;
     box-shadow: 
         0 2px 8px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(80, 250, 123, 0.3); /* green ring */
+        0 0 0 1px rgba(80, 250, 123, 0.3);
     right: 4px;
     transition: right 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55),
                 width 0.15s ease;
 }
 
 .theme-toggle-btn.light .toggle-thumb {
+    top: 4px;
     right: calc(100% - 32px);
-    background: linear-gradient(145deg, #FFFFFF, #FEF3E8); /* warm white thumb */
+    background: linear-gradient(145deg, #FFFFFF, #FEF3E8);
     box-shadow: 
         0 2px 8px rgba(184, 80, 31, 0.3),
-        0 0 0 1px rgba(184, 80, 31, 0.2); /* terracotta ring */
+        0 0 0 1px rgba(184, 80, 31, 0.2);
+}
+
+@media screen and (max-width: 750px) {
+    .theme-toggle-container {
+        top: 10px;
+        right: 56px;               /* sits left of hamburger */
+        z-index: 300;
+    }
+
+    .toggle-track {
+        width: 60px;
+        height: 32px;
+    }
+
+    .toggle-thumb {
+        top: 4px;
+        width: 24px;
+        height: 24px;
+    }
+
+    .theme-toggle-btn.light .toggle-thumb {
+        top: 4px;
+        right: calc(100% - 28px);
+    }
+
+    .toggle-icon {
+        font-size: 12px;
+    }
+
+    .toggle-icons {
+        padding: 0 8px;
+    }
 }
 
 /* Hover */
@@ -119,7 +151,6 @@
     width: 32px;
 }
 
-/* Mobile */
 @media screen and (max-width: 750px) {
     .theme-toggle-container {
         top: 16px;
@@ -132,11 +163,13 @@
     }
 
     .toggle-thumb {
+        top: 4px;                      /* (32px - 24px) / 2 = 4px */
         width: 24px;
         height: 24px;
     }
 
     .theme-toggle-btn.light .toggle-thumb {
+        top: 4px;
         right: calc(100% - 28px);
     }
 

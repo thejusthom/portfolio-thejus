@@ -8,14 +8,13 @@
     padding: 20px 10px;
     padding-right: 0;
     backdrop-filter: blur(10px);
-    background: var(--bg-primary);
     background: rgba(0, 0, 0, 0.2);
-    z-index: 100;
+    z-index: 200;                      /* above ThemeToggle (1000) — wait, see mobile override */
     transition: background var(--transition-medium);
 }
 
 [data-theme="light"] .header {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(254, 249, 242, 0.85);
 }
 
 .header .logo {
@@ -88,7 +87,6 @@
     gap: 15px;
 }
 
-/* Style both buttons and links consistently */
 .header .social-links a,
 .header .social-links .social-btn {
     display: flex;
@@ -111,7 +109,6 @@
     transition: all 0.5s ease-in-out;
 }
 
-/* Theme Toggle Specific Styles */
 .theme-toggle {
     position: relative;
 }
@@ -129,7 +126,6 @@
     display: none;
 }
 
-/* Hover effects */
 .header .social-links a:hover,
 .header .social-links .social-btn:hover {
     transform: scale(1.5);
@@ -150,7 +146,7 @@
     color: var(--text-primary);
     padding: 12px 24px;
     border-radius: 20px;
-    z-index: 1000;
+    z-index: 2000;
     animation: fadeInOut 2s ease forwards;
     box-shadow: 0 4px 20px var(--shadow-color);
     border: 1px solid var(--border-color);
@@ -163,14 +159,14 @@
     100% { opacity: 0; transform: translate(-50%, -20px); }
 }
 
-/* Mobile styles */
+/* ==================== MOBILE ==================== */
 @media screen and (max-width: 750px), (max-height: 550px) {
     .header {
         width: 100vw;
         height: auto;
         flex-direction: row;
         padding: 10px 20px;
-        z-index: 100;
+        z-index: 200;
         backdrop-filter: blur(30px);
     }
 
@@ -185,39 +181,56 @@
     }
 
     .header .hamburger {
-        display: initial;
-        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1100;                 /* above ThemeToggle (1000) */
+        cursor: pointer;
+        padding: 4px;
     }
 
     .header .hamburger .bars {
-        height: 100%;
         color: var(--text-primary);
     }
 
+    /* Slide-in menu — above everything */
     .header .nav-menu {
-        width: 50vw;
-        position: absolute;
+        width: 60vw;
+        position: fixed;
         top: 0;
         height: 100vh;
         right: -100%;
-        transition: 0.5s;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         background: var(--bg-primary);
+        border-left: 1px solid var(--border-color);
+        z-index: 1050;                 /* above ThemeToggle */
+        padding-top: 80px;
+        box-shadow: -10px 0 40px rgba(0,0,0,0.3);
     }
 
     .header .nav-menu.active {
         right: 0;
-        z-index: 10;
     }
 
     .header .nav-menu li {
         transform: rotate(0deg);
-        padding: 5px 10px;
+        padding: 14px 24px;
         z-index: 12;
         transition: all 0.3s ease-in-out;
+        width: 100%;
+        text-align: left;
     }
 
     .nav-menu li:hover {
-        transform: scale(1.12);
+        transform: scale(1.05);
+        background: var(--bg-card-hover);
+    }
+
+    /* Nav menu close button area */
+    .header .nav-menu li .navLink {
+        font-size: 18px;
+        display: block;
+        padding: 4px 0;
     }
 
     .header .social-links {
@@ -226,7 +239,7 @@
         height: auto;
         width: auto;
         flex-direction: row;
-        gap: 20px;
+        gap: 18px;
         background: none;
         transition: none;
     }
@@ -241,23 +254,18 @@
         margin: 0;
     }
 
-    .header .social-links.active {
-        right: 0;
-    }
-
     .toast {
         bottom: 60px;
     }
 }
 
-/* Additional mobile optimization */
 @media screen and (max-width: 480px) {
     .header .logo .logo-img {
         font-size: 35px;
     }
 
     .header .social-links {
-        gap: 15px;
+        gap: 14px;
     }
 
     .header .social-links a,
