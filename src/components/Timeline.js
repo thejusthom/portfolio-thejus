@@ -15,6 +15,18 @@ function Timeline() {
   const timelineData = [
     {
       id: 1,
+      year: "2026 - Present",
+      title: "Software Engineer",
+      institution: "AI Skunkworks, Boston",
+      description: 
+       "• Developing Python REST APIs for Medhavi, an LLM-powered platform converting static textbooks into conversational Canvas LMS courses serving 1,000+ students\n" +
+"• Integrating OpenAI models for AI-generated quizzes, summaries, and lecture notes reducing course build time from weeks to hours\n" +
+"• Architecting OpenStax and GitHub markdown ingestion pipelines with FERPA-compliant data handling and bi-weekly GitHub deployment cadence",
+      type: "work",
+      current: true           // ← mark current here, not hardcoded in JSX
+    },
+    {
+      id: 2,
       year: "2023 - 2025",
       title: "MS in Software Engineering",
       institution: "Northeastern University, Boston",
@@ -26,7 +38,7 @@ function Timeline() {
       type: "education"
     },
     {
-      id: 2,
+      id: 3,
       year: "Spring 2025",
       title: "Software Engineering Co-op",
       institution: "Fashion Index",
@@ -38,7 +50,7 @@ function Timeline() {
       type: "work"
     },
     {
-      id: 3,
+      id: 4,
       year: "2021 - 2023",
       title: "Application Developer",
       institution: "IBM",
@@ -51,7 +63,7 @@ function Timeline() {
       type: "work"
     },
     {
-      id: 4,
+      id: 5,
       year: "2020 - 2021",
       title: "Associate Systems Engineer",
       institution: "IBM",
@@ -63,7 +75,7 @@ function Timeline() {
       type: "work"
     },
     {
-      id: 5,
+      id: 6,
       year: "2016 - 2020",
       title: "B.E. Electronics Engineering",
       institution: "Anna University",
@@ -122,7 +134,7 @@ function Timeline() {
         {timelineData.map((item, index) => (
           <motion.div 
             key={item.id}
-            className={`timeline-item ${item.type} ${activeItem === item.id ? 'expanded' : ''}`}
+            className={`timeline-item ${item.type} ${activeItem === item.id ? 'expanded' : ''} ${item.current ? 'current' : ''}`}
             onClick={() => handleItemClick(item.id)}
             variants={index % 2 === 0 ? itemVariantsRight : itemVariants}
             whileHover={{ scale: 1.02 }}
