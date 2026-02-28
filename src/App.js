@@ -155,6 +155,8 @@ function App() {
     exit: { opacity: 0 }
   };
 
+  const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
   return (
     <ThemeContext.Provider value={{ darkMode, toggleTheme }}>
       <Helmet>
@@ -170,6 +172,7 @@ function App() {
           <meta name="keywords" content="Software Engineer, Backend Developer, Java, Spring Boot, AWS, GCP, Boston, Northeastern" />
           <meta name="author" content="Thejus Thomson" />
       </Helmet>
+      {!isTouchDevice && (
       <AnimatedCursor
         color="#fff"
         innerSize={12}
@@ -212,6 +215,7 @@ function App() {
           '.chat-input'
         ]}
       />
+      )}
       <ThemeToggle />
       <ChatWidget />
       <AnimatePresence mode="wait">

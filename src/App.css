@@ -99,6 +99,11 @@ body {
   transition: background var(--transition-medium), color var(--transition-medium);
 }
 
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  * { cursor: auto !important; }
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
