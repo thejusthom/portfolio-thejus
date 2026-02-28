@@ -71,11 +71,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px var(--shadow-color);
+    box-shadow: 0 4px 15px var(--shadow-glow);
+}
+
+.timeline-dot,
+.timeline-dot *,
+.timeline-dot svg,
+.timeline-dot svg path,
+.timeline-dot svg * {
+    color: #0C0C0A !important;
+    fill: #0C0C0A !important;
+}
+
+[data-theme="light"] .timeline-dot,
+[data-theme="light"] .timeline-dot *,
+[data-theme="light"] .timeline-dot svg,
+[data-theme="light"] .timeline-dot svg path,
+[data-theme="light"] .timeline-dot svg * {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
 }
 
 .timeline-icon {
-    color: #fff;
     font-size: 20px;
 }
 
@@ -171,7 +188,68 @@
     opacity: 0.3;
 }
 
-/* ==================== RESPONSIVE ==================== */
+/* ==================== CURRENT ITEM ==================== */
+.timeline-item.current {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 1px var(--accent-primary),
+                0 0 30px rgba(80, 250, 123, 0.12);
+}
+
+[data-theme="light"] .timeline-item.current {
+    box-shadow: 0 0 0 1px var(--accent-primary),
+                0 0 30px rgba(184, 80, 31, 0.1);
+}
+
+.timeline-item.current .timeline-year::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    margin-right: 8px;
+    vertical-align: middle;
+    animation: livePulse 1.8s ease-in-out infinite;
+}
+
+.timeline-item.current .timeline-year::after {
+    content: 'LIVE';
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--bg-primary);
+    background: var(--accent-primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+[data-theme="light"] .timeline-item.current .timeline-year::after {
+    color: #FFFFFF;
+}
+
+@keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Pulse ring on the dot */
+.timeline-item.current .timeline-dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-primary);
+    animation: dotRing 2s ease-out infinite;
+    opacity: 0;
+}
+
+@keyframes dotRing {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
 @media screen and (max-width: 1040px) {
     .timeline-container {
         margin: 50px 7vw 0px 20vw;

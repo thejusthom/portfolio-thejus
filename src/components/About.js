@@ -67,7 +67,7 @@ function About() {
                 </motion.p>
                 
                 <motion.div variants={itemVariants}>
-                    <a className='resume' href="https://drive.google.com/file/d/10hP9-vWW1ta2GNATZPwnoUivuZwuaYY5/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <a className='resume' href="https://drive.google.com/file/d/1v5NLZ0kybHdQ6-Ym9-jUpd7SXxKOnLb-/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                         View my resume →
                     </a>
                 </motion.div>

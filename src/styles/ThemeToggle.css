@@ -11,30 +11,34 @@
     padding: 0;
     cursor: pointer;
     outline: none;
+    display: flex;          /* centers the track inside the button */
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;    /* matches track shape so focus ring follows it */
 }
 
 .toggle-track {
     position: relative;
     width: 70px;
     height: 36px;
-    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    background: #1A1A17; /* warm dark — matches --bg-secondary */
     border-radius: 50px;
     padding: 4px;
     display: flex;
     align-items: center;
     box-shadow: 
-        0 4px 15px rgba(0, 0, 0, 0.3),
-        inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(0, 0, 0, 0.3);
     transition: all 0.4s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(80, 250, 123, 0.2); /* subtle green border in dark */
 }
 
 .theme-toggle-btn.light .toggle-track {
-    background: linear-gradient(145deg, #e8e8e8, #f5f5f5);
+    background: #EDE3D8; /* warm beige — matches light surface */
     box-shadow: 
         0 4px 15px rgba(0, 0, 0, 0.1),
-        inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+        inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(184, 80, 31, 0.2); /* subtle terracotta border in light */
 }
 
 .toggle-icons {
@@ -54,67 +58,68 @@
     z-index: 1;
 }
 
+/* Dark mode: moon active (right side), sun dim */
 .toggle-icon.sun {
-    color: #ffd43b;
-    opacity: 0.4;
+    color: #BDB5A8;
+    opacity: 0.35;
 }
 
 .toggle-icon.moon {
-    color: #a5b4fc;
+    color: #50FA7B; /* Dracula green moon */
     opacity: 1;
 }
 
+/* Light mode: sun active (left side), moon dim */
 .theme-toggle-btn.light .toggle-icon.sun {
     opacity: 1;
-    color: #f59e0b;
+    color: #B8501F; /* terracotta sun */
 }
 
 .theme-toggle-btn.light .toggle-icon.moon {
-    opacity: 0.4;
-    color: #6b7280;
+    opacity: 0.3;
+    color: #847567;
 }
 
 .toggle-thumb {
     position: absolute;
+    top: 50%;                          /* FIX: vertically center */
+    transform: translateY(-50%);       /* FIX: vertically center */
     width: 28px;
     height: 28px;
-    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    background: linear-gradient(145deg, #2A2A26, #1A1A17); /* dark warm thumb */
     border-radius: 50%;
     box-shadow: 
-        0 2px 8px rgba(0, 0, 0, 0.3),
-        0 1px 3px rgba(0, 0, 0, 0.2);
+        0 2px 8px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(80, 250, 123, 0.3); /* green ring */
     right: 4px;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: right 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                width 0.15s ease;
 }
 
 .theme-toggle-btn.light .toggle-thumb {
     right: calc(100% - 32px);
-    background: linear-gradient(145deg, #fef3c7, #fde68a);
+    background: linear-gradient(145deg, #FFFFFF, #FEF3E8); /* warm white thumb */
     box-shadow: 
-        0 2px 8px rgba(251, 191, 36, 0.4),
-        0 1px 3px rgba(0, 0, 0, 0.1);
+        0 2px 8px rgba(184, 80, 31, 0.3),
+        0 0 0 1px rgba(184, 80, 31, 0.2); /* terracotta ring */
 }
 
-/* Hover effects */
+/* Hover */
 .theme-toggle-btn:hover .toggle-track {
     transform: scale(1.05);
-    box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.4),
-        inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-color: rgba(80, 250, 123, 0.4);
 }
 
 .theme-toggle-btn.light:hover .toggle-track {
-    box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.15),
-        inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-color: rgba(184, 80, 31, 0.4);
 }
 
-/* Active state */
+/* Active state — thumb stretches */
 .theme-toggle-btn:active .toggle-thumb {
     width: 32px;
 }
 
-/* Mobile responsive */
+/* Mobile */
 @media screen and (max-width: 750px) {
     .theme-toggle-container {
         top: 16px;

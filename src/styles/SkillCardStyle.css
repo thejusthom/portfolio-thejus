@@ -46,10 +46,17 @@
     color: var(--accent-primary);
 }
 
-.category-btn.active {
+.category-btn.active,
+.category-btn.active * {
     background: var(--accent-primary);
     border-color: var(--accent-primary);
-    color: #fff;
+    color: #0C0C0A !important;
+    font-weight: 600;
+}
+
+[data-theme="light"] .category-btn.active,
+[data-theme="light"] .category-btn.active * {
+    color: #FFFFFF !important;
 }
 
 /* ==================== SKILLS GRID ==================== */

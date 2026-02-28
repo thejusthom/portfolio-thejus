@@ -95,18 +95,18 @@
 }
 
 .tech-tag {
-    background: rgba(30, 144, 255, 0.15);
+    background: var(--bg-card);
     color: var(--accent-secondary);
     font-size: 0.85rem;
     padding: 6px 14px;
     border-radius: 20px;
-    border: 1px solid rgba(30, 144, 255, 0.3);
+    border: 1px solid var(--border-color-hover);
     transition: all 0.3s ease;
 }
 
 .tech-tag:hover {
-    background: rgba(30, 144, 255, 0.25);
-    border-color: rgba(30, 144, 255, 0.5);
+    background: var(--bg-card-hover);
+    border-color: var(--accent-primary);
 }
 
 /* Project Actions */
@@ -140,19 +140,29 @@
 
 .github-btn:hover {
     border-color: var(--accent-primary) !important;
-    background: rgba(30, 144, 255, 0.1) !important;
+    background: var(--bg-card-hover) !important;
     transform: translateY(-2px);
 }
 
 .case-study-btn {
-    background: linear-gradient(45deg, var(--accent-primary), #0066cc) !important;
-    color: #fff !important;
+    background: var(--accent-primary) !important;
     box-shadow: 0 4px 15px var(--shadow-glow);
+}
+
+.case-study-btn,
+.case-study-btn * {
+    color: #0C0C0A !important;
+}
+
+[data-theme="light"] .case-study-btn,
+[data-theme="light"] .case-study-btn * {
+    color: #FFFFFF !important;
 }
 
 .case-study-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px var(--shadow-glow);
+    opacity: 0.9;
 }
 
 .case-study-btn .btn-arrow {
@@ -164,14 +174,15 @@
 }
 
 .live-btn {
-    background: rgba(255, 255, 255, 0.1) !important;
+    background: var(--bg-card) !important;
     color: var(--text-primary);
     border: 1px solid var(--border-color) !important;
 }
 
 .live-btn:hover {
-    background: rgba(255, 255, 255, 0.15) !important;
+    background: var(--bg-card-hover) !important;
     transform: translateY(-2px);
+    border-color: var(--border-color-hover) !important;
 }
 
 /* ==================== MODAL STYLES ==================== */
@@ -323,12 +334,12 @@
 }
 
 .modal-tech-tag {
-    background: rgba(30, 144, 255, 0.15);
+    background: var(--bg-card);
     color: var(--accent-secondary);
     font-size: 0.9rem;
     padding: 8px 18px;
     border-radius: 25px;
-    border: 1px solid rgba(30, 144, 255, 0.3);
+    border: 1px solid var(--border-color-hover);
 }
 
 /* Impact Grid */
@@ -410,14 +421,21 @@
     box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
 }
 
-.modal-btn.live {
-    background: linear-gradient(45deg, var(--accent-primary), #0066cc);
-    color: #fff;
+.modal-btn.live,
+.modal-btn.live * {
+    background: var(--accent-primary);
+    color: #0C0C0A !important;
+}
+
+[data-theme="light"] .modal-btn.live,
+[data-theme="light"] .modal-btn.live * {
+    color: #FFFFFF !important;
 }
 
 .modal-btn.live:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px var(--shadow-glow);
+    opacity: 0.9;
 }
 
 /* Scrollbar styling for modal */
@@ -475,7 +493,6 @@
         justify-content: center;
     }
 
-    /* Modal responsive */
     .modal-overlay {
         padding: 10px;
     }

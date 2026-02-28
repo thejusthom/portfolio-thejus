@@ -178,12 +178,12 @@ function App() {
         outerScale={2.2}
         outerAlpha={0}
         outerStyle={{
-          background: darkMode ? '#ffffff' : '#000000',
+          background: darkMode ? '#39FF14' : '#D96C3A',
           mixBlendMode: 'exclusion',
           zIndex: 9999
         }}
         innerStyle={{
-          backgroundColor: '#1e90ff',
+          backgroundColor: darkMode ? '#39FF14' : '#D96C3A',
           zIndex: 9999
         }}
         clickables={[
