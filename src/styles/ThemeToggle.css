@@ -11,10 +11,15 @@
     padding: 0;
     cursor: pointer;
     outline: none;
-    display: flex;          /* centers the track inside the button */
+    display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50px;    /* matches track shape so focus ring follows it */
+    border-radius: 50px;
+}
+
+.theme-toggle-btn:focus,
+.theme-toggle-btn:focus-visible {
+    outline: none;
 }
 
 .toggle-track {
@@ -56,6 +61,9 @@
     font-size: 14px;
     transition: all 0.3s ease;
     z-index: 1;
+    width: auto !important;        /* prevent global .social width:100% bleeding in */
+    height: auto !important;
+    flex-shrink: 0;
 }
 
 /* Dark mode: moon active (right side), sun dim */
@@ -80,21 +88,6 @@
     color: #847567;
 }
 
-.toggle-thumb {
-    position: absolute;
-    top: 4px;                          /* (36px track - 28px thumb) / 2 = 4px — no transform needed */
-    width: 28px;
-    height: 28px;
-    background: linear-gradient(145deg, #2A2A26, #1A1A17);
-    border-radius: 50%;
-    box-shadow: 
-        0 2px 8px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(80, 250, 123, 0.3);
-    right: 4px;
-    transition: right 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-                width 0.15s ease;
-}
-
 .theme-toggle-btn.light .toggle-thumb {
     top: 4px;
     right: calc(100% - 32px);
@@ -117,12 +110,6 @@
         height: 30px;
     }
 
-    .toggle-thumb {
-        top: 3px;                      /* (30px - 24px) / 2 = 3px */
-        width: 24px;
-        height: 24px;
-    }
-
     .theme-toggle-btn.light .toggle-thumb {
         top: 3px;
         right: calc(100% - 27px);
@@ -130,10 +117,6 @@
 
     .toggle-icon {
         font-size: 11px;
-    }
-
-    .toggle-icons {
-        padding: 0 7px;
     }
 }
 

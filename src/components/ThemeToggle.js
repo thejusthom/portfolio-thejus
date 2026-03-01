@@ -24,11 +24,6 @@ export default function ThemeToggle() {
             <FaSun className="toggle-icon sun" />
             <FaMoon className="toggle-icon moon" />
           </div>
-          <motion.div 
-            className="toggle-thumb"
-            layout
-            transition={{ type: "spring", stiffness: 500, damping: 30 }}
-          />
         </div>
       </button>
     </motion.div>
