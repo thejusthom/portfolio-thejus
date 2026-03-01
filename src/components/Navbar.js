@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "../styles/NavBarStyle.css";
 import { Link } from "react-scroll";
 import {
   FaGithub,
   FaLinkedin,
   FaBars,
-  FaTimes,
   FaEnvelope,
   FaCopy,
 } from "react-icons/fa";
@@ -13,8 +13,9 @@ import {
 export default function Navbar() {
   const [click, setClick] = useState(false);
   const [showToast, setShowToast] = useState(false);
-  
-  const handleCLick = () => setClick(!click);
+
+  const open  = () => setClick(true);
+  const close = () => setClick(false);
 
   const handleEmailClick = () => {
     const emailDetails = {
@@ -38,11 +39,50 @@ export default function Navbar() {
       .catch(err => console.error('Failed to copy:', err));
   };
 
+  // Animation variants
+  const backdropVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.2 } },
+    exit:   { opacity: 0, transition: { duration: 0.2 } }
+  };
+
+  const menuVariants = {
+    hidden:  { opacity: 0, y: -12 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.25, ease: "easeOut" }
+    },
+    exit: {
+      opacity: 0,
+      y: -12,
+      transition: { duration: 0.2, ease: "easeIn" }
+    }
+  };
+
+  const itemVariants = {
+    hidden:  { opacity: 0, x: -16 },
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: { delay: i * 0.06, duration: 0.25, ease: "easeOut" }
+    })
+  };
+
+  const navItems = [
+    { label: "Timeline", to: "timeline" },
+    { label: "Projects", to: "project"  },
+    { label: "About",    to: "about"    },
+    { label: "Skills",   to: "skills"   },
+  ];
+
   return (
     <div className="nav-container">
       <nav className="header">
+
+        {/* ── Logo ── */}
         <div className="logo">
-          <Link 
+          <Link
             activeClass="active"
             to="home"
             spy={true}
@@ -56,7 +96,8 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <ul className={click ? "nav-menu active" : "nav-menu"} onClick={handleCLick}>
+        {/* ── Desktop vertical nav ── */}
+        <ul className="nav-menu">
           <li>
             <Link
               className="navLink"
@@ -89,7 +130,7 @@ export default function Navbar() {
           </li>
           <li>
             <Link
-              className="navLink" 
+              className="navLink"
               activeClass="active"
               to="skills"
               spy={true}
@@ -99,7 +140,8 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <div className={click ? "social-links active" : "social-links"}>
+        {/* ── Social icons ── */}
+        <div className="social-links">
           <button
             className="social-btn"
             onClick={handleEmailClick}
@@ -130,14 +172,84 @@ export default function Navbar() {
           </a>
         </div>
 
-        <div className="hamburger" onClick={handleCLick}>
-          {click ? (
-            <FaTimes className="bars" size={25} />
-          ) : (
-            <FaBars className="bars" size={25} />
-          )}
-        </div>
+        {/* ── Hamburger (mobile only) ── */}
+        <button
+          className="hamburger"
+          onClick={open}
+          aria-label="Open menu"
+        >
+          <FaBars className="bars" size={22} />
+        </button>
       </nav>
+
+      {/* ── Mobile menu with Framer Motion ── */}
+      <AnimatePresence>
+        {click && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="mobile-backdrop"
+              onClick={close}
+              variants={backdropVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            />
+
+            {/* Menu panel */}
+            <motion.div
+              className="mobile-menu"
+              variants={menuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <ul>
+                {navItems.map((item, i) => (
+                  <motion.li
+                    key={item.to}
+                    custom={i}
+                    variants={itemVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    <Link
+                      className="navLink"
+                      to={item.to}
+                      spy={true}
+                      smooth={true}
+                      duration={30}
+                      onClick={close}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+
+              {/* Social icons at bottom of mobile menu */}
+              <motion.div
+                className="mobile-menu-socials"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { delay: 0.3 } }}
+              >
+                <button className="social-btn" onClick={handleEmailClick} aria-label="Send email">
+                  <FaEnvelope className="social" size={20} />
+                </button>
+                <button className="social-btn" onClick={copyToClipboard} aria-label="Copy email">
+                  <FaCopy className="social" size={20} />
+                </button>
+                <a href="https://linkedin.com/in/thejusthomson/" target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin className="social" size={20} />
+                </a>
+                <a href="https://github.com/thejusthom" target="_blank" rel="noopener noreferrer">
+                  <FaGithub className="social" size={20} />
+                </a>
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       {showToast && (
         <div className="toast">
