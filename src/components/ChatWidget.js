@@ -38,7 +38,12 @@ const ChatWidget = () => {
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
-      inputRef.current.focus();
+      // Don't auto-focus on touch devices — prevents keyboard opening immediately
+      // and prevents iOS zoom-in on open
+      const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+      if (!isTouchDevice) {
+        inputRef.current.focus();
+      }
     }
   }, [isOpen]);
 
