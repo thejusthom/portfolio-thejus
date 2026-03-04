@@ -13,6 +13,7 @@ import ChatWidget from './components/ChatWidget';
 import AnimatedCursor from "react-animated-cursor";
 import { Helmet } from 'react-helmet';
 import Timeline from "./components/Timeline";
+import { FaLinkedin } from "react-icons/fa";
 
 // Initialize Google Analytics
 ReactGA.initialize('G-7YH7MKLFQ9');
@@ -48,6 +49,25 @@ function App() {
 
   // Case Study Data
   const caseStudies = {
+    applyPilot: {
+      tagline: "AI-powered LinkedIn Easy Apply automation with intelligent job evaluation and form memory",
+      overview: "Job searching is repetitive and time-consuming. ApplyPilot automates the entire LinkedIn Easy Apply workflow — from discovering jobs to filling forms — using an LLM to evaluate relevance and a memory system that gets smarter with every run.",
+      problem: "Manually applying to dozens of jobs daily is exhausting and inconsistent. There was no tool that could evaluate job fit intelligently, select the right resume variant, and learn from previous applications — all without an external server.",
+      approach: [
+        "Built a multi-stage filtering pipeline: hard-skip rules run first (free), Gemini LLM evaluates only the remaining jobs to minimize API costs",
+        "Designed a field memory system that auto-saves high-confidence AI answers, so the same form question is never sent to the LLM twice",
+        "Implemented smart resume selection — picks frontend, backend, SRE, or fullstack resume based on job title keyword matching",
+        "Integrated Playwright for persistent browser sessions that survive LinkedIn's session checks",
+        "Built a local Chart.js dashboard that visualizes application history, skip reasons, and company breakdown from a JSON log"
+      ],
+      impact: [
+        { metric: "4 LLMs", label: "Gemini, Claude, GPT supported" },
+        { metric: "Auto-learn", label: "Field memory across runs" },
+        { metric: "Rate-aware", label: "Detects LinkedIn daily limits" },
+        { metric: "Local-first", label: "No external servers" }
+      ],
+      learnings: "The biggest insight was that cost efficiency and intelligence aren't opposites — by running cheap rule-based filters before any LLM call, and caching high-confidence answers, the tool applies smarter while spending less. Building local-first also forced me to think carefully about data design without a backend."
+    },
     mslPlatform: {
       tagline: "AI-powered training platform built in 48 hours that won 1st place at DNATE Hackathon",
       overview: "Medical Science Liaisons (MSLs) need to stay current with vast amounts of medical literature and communicate complex scientific information to healthcare providers. Traditional training methods are time-consuming and don't provide real-time feedback.",
@@ -229,9 +249,19 @@ function App() {
           <Navbar />
           <HomeBanner id="home"/>
           <Timeline id="timeline"/>
-          
+
           <ProjectCard
             id="project"
+            projectTitle="ApplyPilot"
+            projectDesc="AI-powered LinkedIn Easy Apply automation that evaluates job fit with Gemini, selects the right resume, fills forms using field memory, and tracks everything in a local dashboard."
+            techStack={["Python", "Playwright", "Gemini AI", "Claude", "Chart.js", "JSON"]}
+            projectLink="https://www.linkedin.com/posts/thejusthomson_opentowork-softwareengineer-newgrad-activity-7434689009811107840-PV5N/"
+            linkLabel="View Demo"
+            linkIcon={<FaLinkedin size={18}/>}
+            caseStudy={caseStudies.applyPilot}
+          />
+          
+          <ProjectCard            
             className="odd"
             projectTitle="MSL Practice Platform"
             award="🏆 Hackathon Winner"

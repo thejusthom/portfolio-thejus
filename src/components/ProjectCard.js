@@ -92,8 +92,8 @@ export default function ProjectCard(props) {
 
             <div className="project-actions">
               <button className='btn github-btn' onClick={handleGitHubClick}>
-                <FiGithub size={18}/>
-                <span>View Code</span>
+                {props.linkIcon || <FiGithub size={18}/>}
+                <span>{props.linkLabel || "View Code"}</span>
               </button>
               {props.caseStudy && (
                 <button className='btn case-study-btn' onClick={handleCardClick}>
@@ -212,8 +212,8 @@ export default function ProjectCard(props) {
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
-                  <FaGithub size={20}/>
-                  <span>View on GitHub</span>
+                  {props.linkIcon || <FaGithub size={20}/>}
+                  <span>{props.linkLabel || "View on GitHub"}</span>
                 </a>
                 {props.deployedLink && (
                   <a 
