@@ -1,22 +1,24 @@
-<!-- logo.svg -->
+<!-- logo.svg — favicon; colors follow the browser's color scheme -->
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
   <style>
-    .logo-text { 
-      font-size: 17px; 
-      font-weight: 600; 
+    .logo-text {
+      font-size: 17px;
+      font-weight: 600;
       font-family: Arial, sans-serif;
     }
-    .blue-text { 
-      fill: #1e90ff; 
-    }
-    .white-text { 
-      fill: #ffffff; 
+    /* Dark browser chrome (default): Dracula green + warm off-white */
+    .accent-text { fill: #50FA7B; }
+    .main-text { fill: #F0EBE2; }
+    /* Light browser chrome: terracotta + warm near-black */
+    @media (prefers-color-scheme: light) {
+      .accent-text { fill: #B8501F; }
+      .main-text { fill: #27211B; }
     }
   </style>
   <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">
-    <tspan class="blue-text">&lt;</tspan>
-    <tspan class="blue-text">/</tspan>
-    <tspan class="white-text">TT</tspan>
-    <tspan class="blue-text">&gt;</tspan>
+    <tspan class="accent-text">&lt;</tspan>
+    <tspan class="accent-text">/</tspan>
+    <tspan class="main-text">TT</tspan>
+    <tspan class="accent-text">&gt;</tspan>
   </text>
 </svg>
