@@ -1,12 +1,14 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import "../styles/SkillCardStyle.css";
-import { FaJava, FaPython, FaNodeJs, FaAws, FaGithub, FaAngular, FaDocker } from "react-icons/fa";
+import { FaJava, FaPython, FaNodeJs, FaAws, FaGithub, FaAngular, FaDocker, FaBrain } from "react-icons/fa";
 import { DiMongodb, DiPostgresql, DiMysql, DiJenkins } from "react-icons/di";
-import { SiReact, SiSpringboot, SiBootstrap, SiExpress, 
-         SiRedux, SiApachekafka, SiHibernate, SiTerraform, 
+import { SiReact, SiSpringboot, SiExpress,
+         SiRedux, SiHibernate, SiTerraform,
          SiGooglecloud, SiMicrosoftazure, SiOracle, SiKubernetes,
-         SiTypescript, SiNextdotjs, SiGraphql, SiRedis } from "react-icons/si";
+         SiTypescript, SiNextdotjs, SiRedis,
+         SiAnthropic, SiOpenai, SiGooglegemini, SiLangchain, SiMeta, SiNvidia,
+         SiFastapi, SiNestjs, SiTailwindcss, SiMui, SiSqlite, SiKotlin } from "react-icons/si";
 import { TbBrandJavascript, TbBrandHtml5 } from "react-icons/tb";
 
 export default function SkillCard({id}) {
@@ -16,33 +18,45 @@ export default function SkillCard({id}) {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const skillsData = {
+    ai: [
+      { icon: <SiAnthropic className='techLogo'/>, title: 'Claude API', level: 90 },
+      { icon: <SiOpenai className='techLogo'/>, title: 'OpenAI API', level: 90 },
+      { icon: <SiGooglegemini className='techLogo'/>, title: 'Gemini API', level: 85 },
+      { icon: <SiLangchain className='techLogo'/>, title: 'LangChain', level: 85 },
+      { icon: <FaBrain className='techLogo'/>, title: 'RAG Pipelines', level: 85 },
+      { icon: <SiMeta className='techLogo'/>, title: 'Llama / QLoRA', level: 80 },
+      { icon: <SiNvidia className='techLogo'/>, title: 'CUDA / HPC', level: 70 },
+    ],
     languages: [
       { icon: <FaJava className='techLogo'/>, title: 'Java', level: 95 },
-      { icon: <FaPython className='techLogo'/>, title: 'Python', level: 85 },
+      { icon: <FaPython className='techLogo'/>, title: 'Python', level: 90 },
       { icon: <TbBrandJavascript className='techLogo'/>, title: 'JavaScript', level: 90 },
       { icon: <SiTypescript className='techLogo'/>, title: 'TypeScript', level: 85 },
+      { icon: <SiKotlin className='techLogo'/>, title: 'Kotlin', level: 70 },
       { icon: <TbBrandHtml5 className='techLogo'/>, title: 'HTML/CSS', level: 90 },
     ],
     backend: [
       { icon: <SiSpringboot className='techLogo'/>, title: 'Spring Boot', level: 95 },
+      { icon: <SiHibernate className='techLogo'/>, title: 'Hibernate', level: 90 },
       { icon: <FaNodeJs className='techLogo'/>, title: 'Node.js', level: 85 },
       { icon: <SiExpress className='techLogo'/>, title: 'Express.js', level: 85 },
-      { icon: <SiHibernate className='techLogo'/>, title: 'Hibernate', level: 90 },
-      { icon: <SiGraphql className='techLogo'/>, title: 'GraphQL', level: 75 },
-      { icon: <SiApachekafka className='techLogo'/>, title: 'Apache Kafka', level: 80 },
+      { icon: <SiFastapi className='techLogo'/>, title: 'FastAPI', level: 80 },
+      { icon: <SiNestjs className='techLogo'/>, title: 'NestJS', level: 75 },
     ],
     frontend: [
       { icon: <SiReact className='techLogo'/>, title: 'React', level: 90 },
       { icon: <SiNextdotjs className='techLogo'/>, title: 'Next.js', level: 80 },
-      { icon: <FaAngular className='techLogo'/>, title: 'Angular', level: 75 },
       { icon: <SiRedux className='techLogo'/>, title: 'Redux', level: 85 },
-      { icon: <SiBootstrap className='techLogo'/>, title: 'Bootstrap', level: 90 },
+      { icon: <SiTailwindcss className='techLogo'/>, title: 'Tailwind CSS', level: 85 },
+      { icon: <SiMui className='techLogo'/>, title: 'Material-UI', level: 80 },
+      { icon: <FaAngular className='techLogo'/>, title: 'Angular', level: 75 },
     ],
     databases: [
-      { icon: <SiOracle className='techLogo'/>, title: 'Oracle', level: 90 },
       { icon: <DiPostgresql className='techLogo'/>, title: 'PostgreSQL', level: 90 },
+      { icon: <SiOracle className='techLogo'/>, title: 'Oracle', level: 90 },
       { icon: <DiMysql className='techLogo'/>, title: 'MySQL', level: 90 },
       { icon: <DiMongodb className='techLogo'/>, title: 'MongoDB', level: 85 },
+      { icon: <SiSqlite className='techLogo'/>, title: 'SQLite', level: 80 },
       { icon: <SiRedis className='techLogo'/>, title: 'Redis', level: 75 },
     ],
     cloud: [
@@ -59,6 +73,7 @@ export default function SkillCard({id}) {
 
   const categories = [
     { id: 'all', label: 'All Skills' },
+    { id: 'ai', label: 'AI & ML' },
     { id: 'languages', label: 'Languages' },
     { id: 'backend', label: 'Backend' },
     { id: 'frontend', label: 'Frontend' },
@@ -113,7 +128,7 @@ export default function SkillCard({id}) {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
-        Technologies I've worked with across backend, frontend, and cloud
+        Technologies I've worked with across AI, backend, frontend, and cloud
       </motion.p>
 
       {/* Category Filter */}
