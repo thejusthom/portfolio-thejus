@@ -17,11 +17,13 @@ function Timeline() {
       id: 1,
       year: "2026 - Present",
       title: "Software Engineer",
-      institution: "AI Skunkworks, Boston",
-      description: 
-       "• Developing Python REST APIs for Medhavi, an LLM-powered platform converting static textbooks into conversational Canvas LMS courses serving 1,000+ students\n" +
-"• Integrating OpenAI models for AI-generated quizzes, summaries, and lecture notes reducing course build time from weeks to hours\n" +
-"• Architecting OpenStax and GitHub markdown ingestion pipelines with FERPA-compliant data handling and bi-weekly GitHub deployment cadence",
+      institution: "Humanitarians AI, Boston",
+      description:
+        "• Fine-tuned Llama 3.1 8B with QLoRA on an A100 HPC cluster — 87.6% token accuracy for automated biomedical lexicography\n" +
+        "• Built Python pipeline processing 22GB Wikipedia XML dumps into 5,600+ clean biomedical articles\n" +
+        "• Replaced 20K individual JSON files with one indexed SQLite glossary — dropping lookups to O(log n)\n" +
+        "• Developed remark MDX plugin auto-detecting 500+ biomedical terms via a reverse index built for 100K+ keywords\n" +
+        "• Co-authoring a research paper on automated biomedical lexicography",
       type: "work",
       current: true           // ← mark current here, not hardcoded in JSX
     },
@@ -30,23 +32,24 @@ function Timeline() {
       year: "2023 - 2025",
       title: "MS in Software Engineering",
       institution: "Northeastern University, Boston",
-      description: 
+      description:
         "• GPA: 3.8/4.0\n" +
         "• Core coursework: Object-Oriented Design, Algorithms, Cloud Computing, Database Management\n" +
+        "• Won 1st place at DNATE Hackathon — AI-powered MSL training platform built in 48 hours\n" +
         "• Built locALL community platform and CloudNotifyOps serverless architecture\n" +
-        "• Won 1st place at DNATE Hackathon — AI-powered Medical Science Liaison platform",
+        "• Refereed & supervised intramural sports — football, soccer, baseball, volleyball, cricket",
       type: "education"
     },
     {
       id: 3,
       year: "Spring 2025",
-      title: "Software Engineering Co-op",
+      title: "Full Stack Developer Co-op",
       institution: "Fashion Index",
-      description: 
-        "• Built e-commerce features with React, TypeScript, and Next.js\n" +
-        "• Developed responsive UI components for fashion retail platform\n" +
-        "• Implemented search and filtering functionality for product catalogs\n" +
-        "• Collaborated in agile sprints delivering production-ready code",
+      description:
+        "• Engineered product filtering with MongoDB aggregation pipelines — 3x faster search\n" +
+        "• Optimized Next.js and Express.js API routes with code splitting and lazy loading — 40% lower latency\n" +
+        "• Scaled SEO with structured data schemas and XML sitemaps — 25% lift in organic traffic\n" +
+        "• Implemented WCAG 2.1 AA accessibility with semantic HTML and ARIA across all user flows",
       type: "work"
     },
     {
@@ -54,35 +57,35 @@ function Timeline() {
       year: "2021 - 2023",
       title: "Application Developer",
       institution: "IBM",
-      description: 
-        "• Migrated 50+ legacy SOAP services to RESTful APIs — increased transaction capacity by 50%\n" +
-        "• Implemented parallel processing with Apache Camel — reduced latency by 80%\n" +
-        "• Built Spring Boot microservices processing millions of financial transactions daily\n" +
-        "• Earned IBM Consulting VP's Client & Partner Success Award (2023)\n" +
-        "• Led Agile/Kanban ceremonies and mentored 3 junior developers",
+      description:
+        "• Designed Apache Camel parallel processing pipeline decoupling microservice dependencies — cut latency by 80%\n" +
+        "• Migrated 50+ legacy SOAP services to RESTful APIs with zero downtime — 50% higher throughput\n" +
+        "• Tuned PostgreSQL and Oracle queries with composite indexing — 20% faster reads\n" +
+        "• Hardened CI pipeline with SonarQube SAST scanning — critical vulnerabilities down from 20 to 5\n" +
+        "• Shipped React + TypeScript billing components for 1,000+ enterprise accounts\n" +
+        "• Earned IBM Consulting VP's Client & Partner Success Award (2023)",
       type: "work"
     },
     {
       id: 5,
-      year: "2020 - 2021",
+      year: "2021",
       title: "Associate Systems Engineer",
       institution: "IBM",
-      description: 
-        "• Developed backend services with Java and Spring Boot for banking clients\n" +
-        "• Optimized Oracle SQL queries reducing execution time by 35%\n" +
-        "• Maintained high-availability systems with 99.9% uptime SLA\n" +
-        "• Implemented SonarQube for code quality — reduced technical debt by 40%",
+      description:
+        "• Launched AngularJS billing portal with role-based approvals — contract turnaround from 3 days to 2 hours\n" +
+        "• Automated contract workflows via DocuSign APIs — 2K+ documents daily, 60% less manual effort\n" +
+        "• Built Spring Boot + Hibernate REST APIs with sub-1-second response times\n" +
+        "• Containerized services with Docker and GitHub Actions CI/CD — 20% faster releases",
       type: "work"
     },
     {
       id: 6,
       year: "2016 - 2020",
-      title: "B.E. Electronics Engineering",
+      title: "B.E. in Computer Science",
       institution: "Anna University",
-      description: 
+      description:
         "• Strong foundation in Data Structures, OOP, and algorithms\n" +
-        "• Completed hands-on Java programming labs\n" +
-        "• Built programming skills alongside electronics expertise",
+        "• Built early projects in Java and web development",
       type: "education"
     }
   ];
